@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Turismo en Huauchinango - Descubre la región" } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <title>{title} - Turismo Huauchinango</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/" class="logo">🏔️ Huauchinango</a>
+      <ul class="nav-links">
+        <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
+        <li><a href="/turismo" class={currentPath === '/turismo' ? 'active' : ''}>Turismo</a></li>
+        <li><a href="/flora" class={currentPath === '/flora' ? 'active' : ''}>Flora</a></li>
+        <li><a href="/gastronomia" class={currentPath === '/gastronomia' ? 'active' : ''}>Gastronomía</a></li>
+        <li><a href="/blog" class={currentPath.startsWith('/blog') ? 'active' : ''}>Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Turismo Huauchinango - Desarrollo Sustentable</p>
+    <p>Sitio web informativo sobre la región de Huauchinango</p>
+  </footer>
+</body>
+</html>

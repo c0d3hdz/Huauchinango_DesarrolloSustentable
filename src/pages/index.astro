@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Inicio" description="Descubre Huauchinango, una región rica en turismo, naturaleza y gastronomía">
+  <section class="hero">
+    <h1>Bienvenido a Huauchinango</h1>
+    <p>Descubre la belleza natural, la cultura y los sabores de nuestra región</p>
+  </section>
+
+  <div class="cards-grid">
+    <div class="card">
+      <h2>🏞️ Turismo</h2>
+      <p>Explora los lugares más hermosos de Huauchinango, desde cascadas hasta miradores naturales.</p>
+      <a href="/turismo" class="btn">Ver más</a>
+    </div>
+
+    <div class="card">
+      <h2>🌿 Flora</h2>
+      <p>Conoce la diversidad de plantas y flores que hacen única a nuestra región.</p>
+      <a href="/flora" class="btn">Ver más</a>
+    </div>
+
+    <div class="card">
+      <h2>🍽️ Gastronomía</h2>
+      <p>Descubre los sabores tradicionales y platillos típicos de la región.</p>
+      <a href="/gastronomia" class="btn">Ver más</a>
+    </div>
+  </div>
+
+  <section class="mt-2 text-center">
+    <h2>Últimas Publicaciones</h2>
+    <p class="mb-2">Lee nuestro blog para conocer más sobre Huauchinango</p>
+    <a href="/blog" class="btn btn-secondary">Ir al Blog</a>
+  </section>
+</BaseLayout>
