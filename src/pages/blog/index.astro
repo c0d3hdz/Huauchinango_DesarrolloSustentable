@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const blogPosts = await getCollection('blog');
+const sortedPosts = blogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Blog" description="Blog sobre turismo, naturaleza y cultura de Huauchinango">
+  <div class="hero">
+    <h1>📝 Blog</h1>
+    <p>Historias, consejos y descubrimientos sobre Huauchinango</p>
+  </div>
+
+  <div class="blog-list">
+    {sortedPosts.map((post) => (
+      <article class="blog-post">
+        <h2>{post.data.title}</h2>
+        <p class="date">
+          {post.data.date.toLocaleDateString('es-MX', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          })} - {post.data.author}
+        </p>
+        <p>{post.data.description}</p>
+        <a href={`/blog/${post.slug}`}>Leer más →</a>
+      </article>
+    ))}
+  </div>
+</BaseLayout>
