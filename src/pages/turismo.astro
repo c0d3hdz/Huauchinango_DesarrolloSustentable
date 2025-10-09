@@ -1,13 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+var theme = 'box-shadow: inset 0 0 0 1000px var(--pm-azul-oscuro);';
 ---
+<style>
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--pm-azul-oscuro) var(--pm-azul-claro);
+  }
+</style>
 
-<BaseLayout title="Turismo" description="Lugares turísticos de Huauchinango">
-  <div class="hero">
-    <h1>🏞️ Turismo en Huauchinango</h1>
+<BaseLayout title="Turismo" description="Lugares turísticos de Huauchinango" color='background: linear-gradient(135deg,var( --pm-azul-claro),var(--white));'>
+  <div class="hero" style={theme}>
+    <img src="./src/content/image/turismoBanner.png" alt="">
+    <h1 transition:name="hero" transition:animate="slide">Turismo</h1>
     <p>Descubre los lugares más hermosos y emblemáticos de nuestra región</p>
   </div>
-
+  <!--Esto se va a cambiar la ptm -->
   <div class="cards-grid">
     <div class="card">
       <h2>Cascadas</h2>

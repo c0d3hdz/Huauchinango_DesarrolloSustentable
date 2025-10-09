@@ -1,13 +1,16 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import '../styles/global.css';
-
 interface Props {
   title: string;
   description?: string;
+  color?: string;
+  theme?: string;
 }
 
-const { title, description = "Turismo en Huauchinango - Descubre la región" } = Astro.props;
+const { title, description = "Turismo en Huauchinango - Descubre la región", color, theme } = Astro.props;
 const currentPath = Astro.url.pathname;
+
 ---
 
 <!DOCTYPE html>
@@ -16,12 +19,13 @@ const currentPath = Astro.url.pathname;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content={description}>
+  <ViewTransitions />
   <title>{title} - Turismo Huauchinango</title>
 </head>
 <body>
-  <header>
+  <header style={color}>
     <nav>
-      <a href="/" class="logo">🏔️ Huauchinango</a>
+      <a href="/" class="logo"><img src="/src/content/image/Logo_de_los_Pueblos_Mágicos_de_México.svg.png" alt="Pueblos Mágicos de México"> <span>Huauchinango</span></a>
       <ul class="nav-links">
         <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
         <li><a href="/turismo" class={currentPath === '/turismo' ? 'active' : ''}>Turismo</a></li>
