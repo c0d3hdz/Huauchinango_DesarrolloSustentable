@@ -18,14 +18,14 @@ const currentPath = Astro.url.pathname;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content={description}>
+  <meta name="description" content={description}>it
   <ViewTransitions />
   <title>{title} - Turismo Huauchinango</title>
 </head>
 <body>
   <header style={color}>
     <nav>
-      <a href="/" class="logo"><img src="/src/content/image/Logo_de_los_Pueblos_Mágicos_de_México.svg.png" alt="Pueblos Mágicos de México"> <span>Huauchinango</span></a>
+      <a href="/" class="logo"><img src="/image/Logo_de_los_Pueblos_Mágicos_de_México.svg.png" alt="Pueblos Mágicos de México"> <span>Huauchinango</span></a>
       <ul class="nav-links">
         <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
         <li><a href="/turismo" class={currentPath === '/turismo' ? 'active' : ''}>Turismo</a></li>
