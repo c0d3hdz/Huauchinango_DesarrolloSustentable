@@ -1,49 +1,87 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 var theme = "box-shadow: inset 0 0 0 1000px var(--pm-verde-olivo);";
 ---
 
-<BaseLayout title="Flora" description="Flora y vegetación de Huauchinango">
+<style>
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--pm-verde-olivo) var(--pm-verde);
+  }
+</style>
+<BaseLayout
+  title="Flora"
+  description="Flora y vegetación de Huauchinango"
+  color="background: linear-gradient(135deg,var( --pm-verde-olivo),var(--white));"
+>
   <div class="hero" style={theme}>
-    <h1 transition:name="hero" transition:animate="slide">Flora de Huauchinango</h1>
-    <img src="/image/floraBanner.jpg" alt="">
+    <img src="/image/floraBanner.jpg" alt="" />
+    <h1 transition:name="hero" transition:animate="slide">
+      Flora de Huauchinango
+    </h1>
+
     <p>Conoce la diversidad botánica de nuestra región</p>
   </div>
 
   <div class="cards-grid">
     <div class="card">
       <h2>Orquídeas</h2>
-      <p>La región es hogar de diversas especies de orquídeas silvestres, algunas endémicas de la zona. Su belleza y fragilidad las convierten en tesoros naturales que proteger.</p>
+      <p>
+        La región es hogar de diversas especies de orquídeas silvestres, algunas
+        endémicas de la zona. Su belleza y fragilidad las convierten en tesoros
+        naturales que proteger.
+      </p>
     </div>
 
     <div class="card">
       <h2>Flores de Primavera</h2>
-      <p>Durante la primavera, Huauchinango se viste de colores con la floración de azaleas, camelias, hortensias y muchas otras especies ornamentales.</p>
+      <p>
+        Durante la primavera, Huauchinango se viste de colores con la floración
+        de azaleas, camelias, hortensias y muchas otras especies ornamentales.
+      </p>
     </div>
 
     <div class="card">
       <h2>Bosque Mesófilo</h2>
-      <p>Ecosistema único que alberga una gran biodiversidad. Helechos arborescentes, bromelias y musgos crean un paisaje de película.</p>
+      <p>
+        Ecosistema único que alberga una gran biodiversidad. Helechos
+        arborescentes, bromelias y musgos crean un paisaje de película.
+      </p>
     </div>
 
     <div class="card">
       <h2>Plantas Medicinales</h2>
-      <p>La tradición herbolaria es parte importante de la cultura local. Muchas plantas de la región se usan desde tiempos ancestrales con fines medicinales.</p>
+      <p>
+        La tradición herbolaria es parte importante de la cultura local. Muchas
+        plantas de la región se usan desde tiempos ancestrales con fines
+        medicinales.
+      </p>
     </div>
 
     <div class="card">
       <h2>Árboles Nativos</h2>
-      <p>Encinos, pinos y liquidámbares conforman el dosel arbóreo de la región, proporcionando hábitat para numerosas especies de fauna.</p>
+      <p>
+        Encinos, pinos y liquidámbares conforman el dosel arbóreo de la región,
+        proporcionando hábitat para numerosas especies de fauna.
+      </p>
     </div>
 
     <div class="card">
       <h2>Conservación</h2>
-      <p>Esfuerzos locales se enfocan en la preservación de especies endémicas y la reforestación de áreas degradadas para mantener la biodiversidad.</p>
+      <p>
+        Esfuerzos locales se enfocan en la preservación de especies endémicas y
+        la reforestación de áreas degradadas para mantener la biodiversidad.
+      </p>
     </div>
   </div>
 
   <section class="mt-2">
     <h2>Importancia Ecológica</h2>
-    <p>La flora de Huauchinango juega un papel crucial en el equilibrio ecológico de la región. Los bosques actúan como captadores de agua, reguladores del clima local y refugio para diversas especies animales. La conservación de estos ecosistemas es fundamental para el desarrollo sustentable.</p>
+    <p>
+      La flora de Huauchinango juega un papel crucial en el equilibrio ecológico
+      de la región. Los bosques actúan como captadores de agua, reguladores del
+      clima local y refugio para diversas especies animales. La conservación de
+      estos ecosistemas es fundamental para el desarrollo sustentable.
+    </p>
   </section>
 </BaseLayout>

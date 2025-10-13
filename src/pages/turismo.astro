@@ -1,7 +1,8 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-var theme = 'box-shadow: inset 0 0 0 1000px var(--pm-azul-oscuro);';
+import BaseLayout from "../layouts/BaseLayout.astro";
+var theme = "box-shadow: inset 0 0 0 1000px var(--pm-azul-oscuro);";
 ---
+
 <style>
   html {
     scrollbar-width: thin;
@@ -9,47 +10,192 @@ var theme = 'box-shadow: inset 0 0 0 1000px var(--pm-azul-oscuro);';
   }
 </style>
 
-<BaseLayout title="Turismo" description="Lugares turísticos de Huauchinango" color='background: linear-gradient(135deg,var( --pm-azul-claro),var(--white));'>
+<BaseLayout
+  title="Turismo"
+  description="Lugares turísticos de Huauchinango"
+  color="background: linear-gradient(135deg,var( --pm-azul-claro),var(--white));"
+>
   <div class="hero" style={theme}>
-    <img src="/image/turismoBanner.png" alt="">
+    <img src="/image/turismoBanner.png" alt="" />
     <h1 transition:name="hero" transition:animate="slide">Turismo</h1>
     <p>Descubre los lugares más hermosos y emblemáticos de nuestra región</p>
   </div>
-  <!--Esto se va a cambiar la ptm -->
-  <div class="cards-grid">
-    <div class="card">
-      <h2>Cascadas</h2>
-      <p>Huauchinango cuenta con hermosas cascadas naturales rodeadas de vegetación exuberante. Ideales para el ecoturismo y la aventura.</p>
+
+  <section class="manifesto" id="manifestoSection">
+    <div class="manifesto-imagen">
+      <img src="/image/Huella.png" alt="Huella del Viajero Consciente" />
     </div>
 
-    <div class="card">
-      <h2>Miradores</h2>
-      <p>Disfruta de vistas panorámicas impresionantes desde nuestros miradores naturales. Perfectos para la fotografía y contemplar la naturaleza.</p>
-    </div>
+    <div class="manifesto-contenido">
+      <h2>Manifiesto del Viajero Consciente</h2>
+      <p>
+        Explora nuestra ciudad dejando una huella positiva. Sigue estos
+        principios para un turismo que regenera y respeta.
+      </p>
 
-    <div class="card">
-      <h2>Zonas Arqueológicas</h2>
-      <p>Conoce la historia prehispánica de la región visitando sitios arqueológicos que guardan secretos de culturas ancestrales.</p>
+      <ul class="manifesto-lista">
+        <li>
+          <span class="icono">🌿</span>
+          <div>
+            <h3>Prioriza lo local</h3>
+            <p>
+              Apoya a pequeños productores y artesanos. Tu visita puede
+              fortalecer nuestra economía comunitaria.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="icono">♻️</span>
+          <div>
+            <h3>Minimiza tu huella</h3>
+            <p>
+              Opta por el transporte público, reduce tus residuos y sé
+              consciente del consumo de agua y energía.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="icono">🤝</span>
+          <div>
+            <h3>Respeta la cultura y la comunidad</h3>
+            <p>
+              Interactúa con autenticidad, valora nuestras tradiciones y cuida
+              los espacios que son de todos.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="icono">👁️</span>
+          <div>
+            <h3>Sé un observador, no un consumidor</h3>
+            <p>
+              Conecta con el entorno, aprende de nuestra historia y disfruta de
+              experiencias genuinas.
+            </p>
+          </div>
+        </li>
+      </ul>
     </div>
-
-    <div class="card">
-      <h2>Pueblo Mágico</h2>
-      <p>Recorre el centro histórico y disfruta de la arquitectura colonial, plazas y tradiciones que hacen de Huauchinango un destino único.</p>
-    </div>
-
-    <div class="card">
-      <h2>Feria de las Flores</h2>
-      <p>Una celebración anual que muestra la belleza floral de la región, con eventos culturales, música y gastronomía.</p>
-    </div>
-
-    <div class="card">
-      <h2>Ecoturismo</h2>
-      <p>Rutas de senderismo, observación de aves y actividades al aire libre en un entorno natural preservado.</p>
-    </div>
-  </div>
-
-  <section class="mt-2">
-    <h2>Planifica tu Visita</h2>
-    <p>La mejor época para visitar Huauchinango es durante la primavera, cuando las flores están en su máximo esplendor. No olvides traer ropa cómoda para caminar y una cámara para capturar la belleza natural.</p>
   </section>
 </BaseLayout>
+<style>
+  .manifesto {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Divide en 2 columnas, la derecha un poco más ancha */
+    gap: 4rem; /* Espacio entre columnas */
+    align-items: center;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    animation: fade-in-up linear;
+    animation-timeline: view();
+    animation-range-start: entry 20%;
+    animation-range-end: entry 50%;
+    animation-fill-mode: both;
+  }
+  .manifesto-imagen {
+    text-align: center;
+  }
+  .manifesto-imagen img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+  }
+  .manifesto.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .manifesto-imagen {
+    text-align: center;
+  }
+
+  .manifesto-imagen img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+  }
+  .manifesto-contenido h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--pm-azul-oscuro);
+    margin-bottom: 1rem;
+  }
+
+  .manifesto-contenido > p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    color: #555;
+  }
+
+  .manifesto-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .manifesto-lista li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .manifesto-lista li:hover {
+    background-color: #f4f8fa;
+    transform: translateX(10px);
+  }
+
+  .manifesto-lista .icono {
+    font-size: 2rem;
+    line-height: 1;
+    margin-top: 5px;
+  }
+
+  .manifesto-lista h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--pm-azul-oscuro);
+    margin: 0 0 0.25rem 0;
+  }
+
+  .manifesto-lista p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    color: #666;
+  }
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (max-width: 900px) {
+    .manifesto {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+    .manifesto-imagen {
+      margin-bottom: 2rem;
+    }
+    .manifesto-imagen img {
+      max-width: 250px;
+    }
+    .manifesto-lista li {
+      text-align: left;
+    }
+    .manifesto-lista li:hover {
+      transform: none;
+    }
+  }
+</style>
