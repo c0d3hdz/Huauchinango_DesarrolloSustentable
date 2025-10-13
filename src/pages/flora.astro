@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+var theme = "box-shadow: inset 0 0 0 1000px var(--pm-verde-olivo);";
 ---
 
 <BaseLayout title="Flora" description="Flora y vegetación de Huauchinango">
-  <div class="hero">
-    <h1>🌿 Flora de Huauchinango</h1>
+  <div class="hero" style={theme}>
+    <h1 transition:name="hero" transition:animate="slide">Flora de Huauchinango</h1>
+    <img src="/image/floraBanner.jpg" alt="">
     <p>Conoce la diversidad botánica de nuestra región</p>
   </div>
 
