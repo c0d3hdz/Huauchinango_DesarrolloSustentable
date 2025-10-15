@@ -1,0 +1,314 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const routes = await getCollection('routes');
+  return routes.map((route) => ({
+    params: { slug: route.slug },
+    props: { route },
+  }));
+}
+
+const { route } = Astro.props;
+const { Content } = await route.render();
+
+const typeStyles = {
+  cultural: {
+    gradient: 'linear-gradient(135deg, var(--pm-morado-claro), var(--pm-magenta))',
+    icon: '🏛️',
+    label: 'Ruta Cultural',
+    primaryColor: 'var(--pm-morado)',
+  },
+  senderismo: {
+    gradient: 'linear-gradient(135deg, var(--pm-verde), var(--pm-azul-claro))',
+    icon: '🥾',
+    label: 'Senderismo',
+    primaryColor: 'var(--pm-verde)',
+  },
+};
+
+const difficultyInfo = {
+  facil: { label: 'Fácil', icon: '○', color: '#4ade80' },
+  moderado: { label: 'Moderado', icon: '◐', color: '#fbbf24' },
+  dificil: { label: 'Difícil', icon: '●', color: '#ef4444' },
+};
+
+const style = typeStyles[route.data.type];
+const diffInfo = difficultyInfo[route.data.difficulty];
+---
+
+<BaseLayout 
+  title={route.data.title} 
+  description={route.data.description}
+  color={`background: ${style.gradient};`}
+>
+  <div class="route-hero" style={`background: ${style.gradient};`}>
+    <div class="route-hero-content">
+      <div class="route-type-badge">
+        <span class="badge-icon">{style.icon}</span>
+        <span class="badge-text">{style.label}</span>
+      </div>
+      <h1>{route.data.title}</h1>
+      <p class="hero-description">{route.data.description}</p>
+      
+      <div class="route-meta">
+        <div class="meta-item">
+          <span class="meta-icon">⏱️</span>
+          <div>
+            <span class="meta-label">Duración</span>
+            <span class="meta-value">{route.data.duration}</span>
+          </div>
+        </div>
+        
+        {route.data.distance && (
+          <div class="meta-item">
+            <span class="meta-icon">📏</span>
+            <div>
+              <span class="meta-label">Distancia</span>
+              <span class="meta-value">{route.data.distance}</span>
+            </div>
+          </div>
+        )}
+        
+        <div class="meta-item">
+          <span class="meta-icon" style={`color: ${diffInfo.color}; font-size: 1.5rem;`}>{diffInfo.icon}</span>
+          <div>
+            <span class="meta-label">Dificultad</span>
+            <span class="meta-value" style={`color: ${diffInfo.color};`}>{diffInfo.label}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <article class="route-content" data-type={route.data.type}>
+    <Content />
+    
+    <div class="route-actions">
+      <a href="/turismo" class="btn btn-back">← Volver a Turismo</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .route-hero {
+    color: var(--white);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .route-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .route-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1.25rem;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .badge-icon {
+    font-size: 1.3rem;
+  }
+
+  .route-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .hero-description {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+
+  .route-meta {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+  }
+
+  .meta-icon {
+    font-size: 1.8rem;
+  }
+
+  .meta-label {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.9;
+    font-weight: 500;
+  }
+
+  .meta-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .route-content {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
+    margin: 0 auto 2rem;
+  }
+
+  .route-content :global(h1) {
+    color: var(--pm-azul-oscuro);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .route-content :global(h2) {
+    color: var(--pm-azul-oscuro);
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+  }
+
+  .route-content :global(h3) {
+    color: var(--pm-azul-oscuro);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .route-content :global(p) {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1.05rem;
+  }
+
+  .route-content :global(ul),
+  .route-content :global(ol) {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .route-content :global(li) {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .route-content :global(strong) {
+    color: var(--pm-azul-oscuro);
+    font-weight: 600;
+  }
+
+  .route-content :global(iframe) {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+  }
+
+  .route-content :global(img) {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Specific colors for route types */
+  .route-content[data-type="cultural"] :global(h1),
+  .route-content[data-type="cultural"] :global(h2),
+  .route-content[data-type="cultural"] :global(h3) {
+    color: var(--pm-morado);
+  }
+
+  .route-content[data-type="senderismo"] :global(h1),
+  .route-content[data-type="senderismo"] :global(h2),
+  .route-content[data-type="senderismo"] :global(h3) {
+    color: var(--pm-verde);
+  }
+
+  .route-actions {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e5e7eb;
+  }
+
+  .btn-back {
+    display: inline-block;
+    padding: 0.875rem 1.75rem;
+    background: var(--pm-azul-oscuro);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-back:hover {
+    background: var(--pm-azul-claro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .route-hero {
+      padding: 2rem 1.5rem;
+    }
+
+    .route-hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+    }
+
+    .route-meta {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .meta-item {
+      width: 100%;
+    }
+
+    .route-content {
+      padding: 2rem 1.5rem;
+    }
+
+    .route-content :global(h1) {
+      font-size: 2rem;
+    }
+
+    .route-content :global(h2) {
+      font-size: 1.6rem;
+    }
+
+    .route-content :global(h3) {
+      font-size: 1.3rem;
+    }
+  }
+</style>

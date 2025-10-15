@@ -1,0 +1,91 @@
+---
+title: "Recorrido por el Centro Histórico"
+description: "Explora el corazón cultural de Huauchinango con su arquitectura colonial y tradiciones vivas"
+type: "cultural"
+difficulty: "facil"
+image: "/image/turismoBanner.png"
+duration: "2-3 horas"
+distance: "2 km"
+mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119073.00000000001!2d-98.05!3d20.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1a8e00000000%3A0x0!2sHuauchinango!5e0!3m2!1ses!2smx!4v1234567890"
+guideContacts:
+  - name: "Pedro Ramírez"
+    phone: "+52 776 123 4567"
+    email: "pedro.ramirez@guias.mx"
+  - name: "Ana García"
+    phone: "+52 776 234 5678"
+---
+
+# Recorrido por el Centro Histórico
+
+Descubre la riqueza histórica y cultural de Huauchinango a través de sus calles empedradas, edificios coloniales y tradiciones que se mantienen vivas en cada rincón.
+
+## Puntos de Interés
+
+### Parroquia de la Asunción
+Una joya arquitectónica del siglo XVIII que domina la plaza principal. Su fachada barroca y su interior decorado con arte sacro son imperdibles.
+
+### Plaza Principal
+El corazón de la ciudad donde convergen locales y visitantes. Los fines de semana se llena de vida con eventos culturales y mercados artesanales.
+
+### Mercado Municipal
+Sumérgete en los sabores y aromas locales. Aquí encontrarás productos frescos, artesanías y la famosa gastronomía poblana.
+
+### Casa de la Cultura
+Un espacio dedicado a preservar y promover las tradiciones locales. Frecuentemente alberga exposiciones de arte y talleres culturales.
+
+## Mapa del Recorrido
+
+<iframe 
+  src={frontmatter.mapUrl}
+  width="100%"
+  height="450"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
+
+## Consejos Prácticos
+
+- **Mejor momento**: Martes a domingo por la mañana (9:00 AM - 12:00 PM)
+- **Calzado**: Zapatos cómodos para caminar por calles empedradas
+- **Vestimenta**: Casual, llevar sombrero y protector solar
+- **Dinero**: Llevar efectivo para compras en el mercado
+- **Cámara**: No olvides tu cámara o smartphone para capturar la arquitectura
+
+## Experiencias Locales
+
+Durante el recorrido podrás:
+- Probar el café de olla en puestos tradicionales
+- Observar artesanos trabajando en vivo
+- Participar en talleres de artesanía (previa reserva)
+- Degustar antojitos regionales
+
+## Accesibilidad
+
+Este recorrido es apto para todas las edades y niveles de condición física. Las calles principales cuentan con rampas de acceso, aunque algunas zonas del mercado pueden ser más complicadas para sillas de ruedas.
+
+## Contacto de Guías Locales
+
+Para una experiencia más enriquecedora, recomendamos contratar un guía local certificado:
+
+{frontmatter.guideContacts && frontmatter.guideContacts.map(guide => (
+  <div key={guide.name}>
+    <strong>{guide.name}</strong>
+    <br />
+    Teléfono: {guide.phone}
+    {guide.email && (
+      <>
+        <br />
+        Email: {guide.email}
+      </>
+    )}
+  </div>
+))}
+
+## Preservación Cultural
+
+Al visitar estos espacios históricos, recuerda:
+- Respetar las zonas señalizadas
+- No tocar objetos de valor histórico
+- Seguir las indicaciones del personal
+- Contribuir con el turismo responsable comprando productos locales

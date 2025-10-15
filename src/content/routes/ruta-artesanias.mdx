@@ -1,0 +1,73 @@
+---
+title: "Ruta de las Tradiciones y Artesanías"
+description: "Visita talleres de artesanos locales y conoce las tradiciones que han pasado de generación en generación"
+type: "cultural"
+difficulty: "facil"
+image: "/image/turismoBanner.png"
+duration: "3-4 horas"
+distance: "3 km"
+mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119073.00000000001!2d-98.05!3d20.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1a8e00000000%3A0x0!2sHuauchinango!5e0!3m2!1ses!2smx!4v1234567890"
+guideContacts:
+  - name: "Sofía Artesanos"
+    phone: "+52 776 567 8901"
+    email: "sofia.tours@cultura.mx"
+---
+
+# Ruta de las Tradiciones y Artesanías
+
+Sumérgete en el rico patrimonio artesanal de Huauchinango visitando talleres familiares donde maestros artesanos mantienen vivas técnicas ancestrales.
+
+## Talleres a Visitar
+
+### Taller de Alfarería "Barro Noble"
+Conoce el proceso completo de creación de piezas de barro, desde el modelado hasta la cocción en hornos tradicionales.
+
+### Tejeduría de Textiles Tradicionales
+Observa cómo se crean huipiles y rebozos en telares de cintura, técnica prehispánica que se mantiene vigente.
+
+### Taller de Papel Amate
+Aprende sobre este papel artesanal hecho a mano con corteza de árbol, utilizado desde tiempos prehispánicos.
+
+### Talabartería Don Miguel
+Un taller familiar de cuero donde se elaboran cinturones, bolsos y artículos tradicionales charros.
+
+## Experiencias Interactivas
+
+- Participa en talleres prácticos de alfarería
+- Aprende técnicas básicas de tejido
+- Crea tu propia pieza de papel amate
+- Degusta café de la región en cada taller
+
+## Mapa del Recorrido
+
+<iframe 
+  src={frontmatter.mapUrl}
+  width="100%"
+  height="450"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
+
+## Consejos para tu Visita
+
+- **Horario**: Martes a sábado, 10:00 AM - 2:00 PM
+- **Reservación**: Se recomienda reservar con 2 días de anticipación
+- **Compras**: Apoya directamente a los artesanos comprando sus productos
+- **Fotografía**: Pide permiso antes de fotografiar a los artesanos
+
+## Contacto
+
+{frontmatter.guideContacts && frontmatter.guideContacts.map(guide => (
+  <div key={guide.name}>
+    <strong>{guide.name}</strong>
+    <br />
+    Teléfono: {guide.phone}
+    {guide.email && (
+      <>
+        <br />
+        Email: {guide.email}
+      </>
+    )}
+  </div>
+))}

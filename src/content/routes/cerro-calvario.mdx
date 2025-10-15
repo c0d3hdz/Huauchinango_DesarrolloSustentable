@@ -1,0 +1,64 @@
+---
+title: "Ascenso al Cerro del Calvario"
+description: "Conquista la cumbre con vistas panorámicas de 360 grados de Huauchinango y la Sierra"
+type: "senderismo"
+difficulty: "dificil"
+image: "/image/turismoBanner.png"
+duration: "6-7 horas"
+distance: "10 km (ida y vuelta)"
+mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119073.00000000001!2d-98.05!3d20.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1a8e00000000%3A0x0!2sHuauchinango!5e0!3m2!1ses!2smx!4v1234567890"
+guideContacts:
+  - name: "Roberto Cumbres"
+    phone: "+52 776 678 9012"
+    email: "roberto.montana@extremo.mx"
+---
+
+# Ascenso al Cerro del Calvario
+
+Un desafío para excursionistas experimentados que serán recompensados con vistas espectaculares de toda la región.
+
+## Características del Sendero
+
+- **Desnivel acumulado**: 650 metros
+- **Altitud máxima**: 1,850 msnm
+- **Tipo de terreno**: Rocoso con secciones empinadas
+- **Requisitos**: Excelente condición física
+
+## Equipo Especializado Necesario
+
+- Botas de montaña de caña alta
+- Bastones de trekking (muy recomendados)
+- Agua: mínimo 3 litros por persona
+- GPS o mapa topográfico
+- Kit de emergencia completo
+
+## Seguridad
+
+⚠️ **Advertencia**: Este sendero solo es recomendable para excursionistas con experiencia. Se requiere contratar un guía certificado obligatoriamente.
+
+## Mapa
+
+<iframe 
+  src={frontmatter.mapUrl}
+  width="100%"
+  height="450"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
+
+## Guía Certificado
+
+{frontmatter.guideContacts && frontmatter.guideContacts.map(guide => (
+  <div key={guide.name}>
+    <strong>{guide.name}</strong> - Guía especializado en alta montaña
+    <br />
+    Teléfono: {guide.phone}
+    {guide.email && (
+      <>
+        <br />
+        Email: {guide.email}
+      </>
+    )}
+  </div>
+))}
