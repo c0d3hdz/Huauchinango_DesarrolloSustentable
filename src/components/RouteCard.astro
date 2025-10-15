@@ -1,0 +1,241 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  type: 'cultural' | 'senderismo';
+  difficulty: 'facil' | 'moderado' | 'dificil';
+  image: string;
+  slug: string;
+  duration: string;
+}
+
+const { title, description, type, difficulty, image, slug, duration } = Astro.props;
+
+const typeStyles = {
+  cultural: {
+    gradient: 'linear-gradient(135deg, var(--pm-morado-claro), var(--pm-magenta))',
+    icon: '🏛️',
+    label: 'Ruta Cultural',
+    accentColor: 'var(--pm-morado)',
+  },
+  senderismo: {
+    gradient: 'linear-gradient(135deg, var(--pm-verde), var(--pm-azul-claro))',
+    icon: '🥾',
+    label: 'Senderismo',
+    accentColor: 'var(--pm-verde)',
+  },
+};
+
+const difficultyInfo = {
+  facil: { label: 'Fácil', icon: '○', color: '#4ade80' },
+  moderado: { label: 'Moderado', icon: '◐', color: '#fbbf24' },
+  dificil: { label: 'Difícil', icon: '●', color: '#ef4444' },
+};
+
+const style = typeStyles[type];
+const diffInfo = difficultyInfo[difficulty];
+---
+
+<article class="route-card" data-type={type}>
+  <a href={`/rutas/${slug}`} class="route-card-link">
+    <div class="route-card-image">
+      <img src={image} alt={title} />
+      <div class="route-type-badge" style={`background: ${style.gradient};`}>
+        <span class="route-type-icon">{style.icon}</span>
+        <span class="route-type-label">{style.label}</span>
+      </div>
+    </div>
+    
+    <div class="route-card-content">
+      <h3 class="route-card-title">{title}</h3>
+      <p class="route-card-description">{description}</p>
+      
+      <div class="route-card-info">
+        <div class="info-item">
+          <span class="info-icon">⏱️</span>
+          <span class="info-text">{duration}</span>
+        </div>
+        <div class="info-item difficulty">
+          <span class="info-icon" style={`color: ${diffInfo.color};`}>{diffInfo.icon}</span>
+          <span class="info-text" style={`color: ${diffInfo.color};`}>{diffInfo.label}</span>
+        </div>
+      </div>
+      
+      <div class="route-card-cta">
+        <span>Ver detalles</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+  </a>
+</article>
+
+<style>
+  .route-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: fade-in-up linear;
+    animation-timeline: view();
+    animation-range-start: entry 10%;
+    animation-range-end: entry 40%;
+    animation-fill-mode: both;
+  }
+
+  .route-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .route-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .route-card-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .route-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .route-card:hover .route-card-image img {
+    transform: scale(1.1);
+  }
+
+  .route-type-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.85rem;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .route-type-icon {
+    font-size: 1.1rem;
+  }
+
+  .route-card-content {
+    padding: 1.5rem;
+  }
+
+  .route-card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--pm-azul-oscuro);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .route-card-description {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .route-card-info {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-icon {
+    font-size: 1.1rem;
+  }
+
+  .info-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #666;
+  }
+
+  .difficulty .info-icon {
+    font-size: 1.3rem;
+  }
+
+  .route-card-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    color: var(--pm-azul-oscuro);
+    font-size: 0.95rem;
+  }
+
+  .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .route-card:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Specific styles for route types */
+  .route-card[data-type="cultural"] .route-card-title {
+    color: var(--pm-morado);
+  }
+
+  .route-card[data-type="cultural"] .route-card-cta {
+    color: var(--pm-morado);
+  }
+
+  .route-card[data-type="senderismo"] .route-card-title {
+    color: var(--pm-verde);
+  }
+
+  .route-card[data-type="senderismo"] .route-card-cta {
+    color: var(--pm-verde);
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .route-card-image {
+      height: 180px;
+    }
+
+    .route-card-title {
+      font-size: 1.2rem;
+    }
+
+    .route-card-info {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+</style>
