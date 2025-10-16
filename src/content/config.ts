@@ -6,7 +6,7 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.date(),
-    author: z.string().default('Equipo Huauchinango'),
+    author: z.string().default('Desconocido'),
     image: z.string().optional(),
   }),
 });

@@ -1,0 +1,45 @@
+---
+title: "Cerro Zempoaltepetl"
+description: "El Cerro Zempoaltépetl, que en náhuatl significa veinte cerros o cerro grande, es uno de los picos más emblemáticos de la Sierra Norte de Puebla. Ofrece a los senderistas una experiencia única, con vistas panorámicas espectaculares y un entorno natural de gran belleza."
+type: "senderismo"
+difficulty: "moderado"
+image: "/image/ZempolaRuta.webp"
+duration: "2-9 horas (Depende del Tour)"
+distance: "8 km (ida y vuelta)"
+mapUrl: "https://www.google.com/maps/d/embed?mid=14QvYIFJlabxYOT3B9RzHNBumEZrTZvA&ehbc=2E312F"
+guideContacts:
+  - name: "lorem"
+    phone: "-------------"
+    email: ""
+    instagram: ""
+---
+
+## Mapa y Ubicación
+<iframe 
+  src={frontmatter.mapUrl}
+  title="Cerro de Zempoala"
+  width="50%"
+  height="450"
+  style="border:null;"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
+## Guías Locales Certificados
+
+Para garantizar tu seguridad y una experiencia enriquecedora, contacta a nuestros guías especializados:
+
+{frontmatter.guideContacts && frontmatter.guideContacts.map(guide => (
+  <div key={guide.name} style="margin-bottom: 1rem;">
+    <strong>{guide.name}</strong>
+    <br />
+    📞 Teléfono: {guide.phone}
+    {guide.email && (
+      <>
+        <br />
+        📧 Email: {guide.email}
+      </>
+    )}
+  </div>
+))}
+
+**Importante**: Este sendero se encuentra en una zona natural protegida. Tu cooperación es esencial para preservar este ecosistema para futuras generaciones.

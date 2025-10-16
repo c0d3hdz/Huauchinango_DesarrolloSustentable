@@ -43,7 +43,7 @@ const diffInfo = difficultyInfo[route.data.difficulty];
   description={route.data.description}
   color={`background: ${style.gradient};`}
 >
-  <div class="route-hero" style={`background: ${style.gradient};`}>
+  <div class="route-hero" style={`background-image:url(${route.data.image});`}>
     <div class="route-hero-content">
       <div class="route-type-badge">
         <span class="badge-icon">{style.icon}</span>
@@ -81,7 +81,6 @@ const diffInfo = difficultyInfo[route.data.difficulty];
       </div>
     </div>
   </div>
-
   <article class="route-content" data-type={route.data.type}>
     <Content />
     
