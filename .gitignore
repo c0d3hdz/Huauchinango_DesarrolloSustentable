@@ -25,6 +25,3 @@ pnpm-debug.log*
 # Temporary files
 *.tmp
 *.temp
-
-# Generated from node_modules
-public/leaflet/
