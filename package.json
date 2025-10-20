@@ -10,6 +10,9 @@
     "astro": "astro",
     "postinstall": "mkdir -p public/leaflet && cp -r node_modules/leaflet/dist/leaflet.css node_modules/leaflet/dist/images public/leaflet/"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "@astrojs/mdx": "^2.0.0",
     "@mapbox/togeojson": "^0.16.2",

@@ -39,6 +39,18 @@ El sitio estará disponible en `http://localhost:4321`
 - `npm run build` - Construye el sitio para producción
 - `npm run preview` - Previsualiza la versión de producción
 
+## 🚀 Despliegue en Producción
+
+El sitio está configurado para ser desplegado en Vercel automáticamente. Cada commit a la rama `main` dispara un nuevo despliegue.
+
+**URL de producción:** https://huauchinango-desarrollo-sustentable.vercel.app
+
+### Requisitos para Producción
+
+- Node.js 18 o superior
+- El comando `npm install` ejecutará automáticamente el script `postinstall` que copia los archivos necesarios de Leaflet
+- El sitio se construye como un sitio estático (SSG) por defecto
+
 ## 📁 Estructura del Proyecto
 
 ```
