@@ -10,106 +10,107 @@ const {
 const id = `leaflet-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-/>
-<div id={id} style={`height:${height}; width:100%`} class="leaflet-map"></div>
+<link rel="stylesheet" href="/leaflet/leaflet.css" />
+<div 
+  id={id} 
+  style={`height:${height}; width:100%`} 
+  class="leaflet-map"
+  data-url={dataUrl}
+  data-is-kml={isKml}
+  data-center={JSON.stringify(center)}
+  data-zoom={zoom}
+></div>
 
-<script type="module">
-  import * as L from "https://unpkg.com/leaflet@1.9.3/dist/leaflet-src.esm.js";
+<script>
+  import L from 'leaflet';
+  import { kml } from '@mapbox/togeojson';
 
-  const ID = JSON.stringify(id);
-  const DATA_URL = JSON.stringify(dataUrl);
-  const IS_KML = JSON.stringify(isKml);
-  const CENTER = JSON.stringify(center);
-  const ZOOM = JSON.stringify(zoom);
+  // Initialize all leaflet maps on the page
+  document.addEventListener('DOMContentLoaded', () => {
+    const mapElements = document.querySelectorAll('.leaflet-map');
+    
+    mapElements.forEach(async (mapEl) => {
+      const mapId = mapEl.id;
+      const dataUrl = mapEl.getAttribute('data-url') || '/rutas.kml';
+      const isKml = mapEl.getAttribute('data-is-kml') !== 'false';
+      const centerData = mapEl.getAttribute('data-center') || '[20.06, -97.92]';
+      const center = JSON.parse(centerData);
+      const zoom = parseInt(mapEl.getAttribute('data-zoom') || '12');
 
-  (async () => {
-    const map = L.map(ID, { preferCanvas: true }).setView(
-      [CENTER[0], CENTER[1]],
-      ZOOM
-    );
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution: "&copy; OpenStreetMap contributors",
-    }).addTo(map);
-
-    try {
-      const resp = await fetch(DATA_URL);
-      const text = await resp.text();
-
-      if (IS_KML) {
-        const togeo = await import("togeojson").catch((e) => {
-          console.error("No se pudo importar togeojson:", e);
-          return null;
-        });
-        if (!togeo) throw new Error("togeojson no disponible");
-
-        const kml = togeo.kml || (togeo.default && togeo.default.kml);
-        if (!kml) throw new Error("Función kml no encontrada en togeojson");
-
-        const parser = new DOMParser();
-        const kmlDoc = parser.parseFromString(text, "text/xml");
-        const geojson = kml(kmlDoc);
-        const layer = L.geoJSON(geojson, {
-          style: (feature) => {
-            if (
-              feature.geometry &&
-              feature.geometry.type &&
-              feature.geometry.type.includes("Line")
-            )
-              return { color: "crimson", weight: 4 };
-            return { color: "#3388ff" };
-          },
-          onEachFeature: (feature, lyr) => {
-            const name =
-              feature.properties &&
-              (feature.properties.name ||
-                feature.properties.Name ||
-                feature.properties.description);
-            if (name) lyr.bindPopup(name);
-          },
-          pointToLayer: (feature, latlng) =>
-            L.circleMarker(latlng, {
-              radius: 5,
-              fillColor: "#3388ff",
-              fillOpacity: 0.9,
-              stroke: false,
-            }),
+      try {
+        const map = L.map(mapId, { preferCanvas: true }).setView(center, zoom);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution: "&copy; OpenStreetMap contributors",
         }).addTo(map);
 
-        // comprobación segura de bounds
-        if (typeof layer.getBounds === "function") {
-          const bounds = layer.getBounds();
-          if (
-            bounds && typeof bounds.isValid === "function"
-              ? bounds.isValid()
-              : bounds && bounds.isValid !== false
-          ) {
-            map.fitBounds(bounds);
-          }
-        }
-      } else {
-        const geojson = JSON.parse(text);
-        const layer = L.geoJSON(geojson).addTo(map);
-        if (typeof layer.getBounds === "function") {
-          const bounds = layer.getBounds();
-          if (
-            bounds && typeof bounds.isValid === "function"
-              ? bounds.isValid()
-              : bounds && bounds.isValid !== false
-          ) {
-            map.fitBounds(bounds);
-          } else {
-            map.setView([CENTER[0], CENTER[1]], ZOOM);
+        const resp = await fetch(dataUrl);
+        const text = await resp.text();
+
+        if (isKml) {
+          const parser = new DOMParser();
+          const kmlDoc = parser.parseFromString(text, "text/xml");
+          const geojson = kml(kmlDoc);
+          
+          const layer = L.geoJSON(geojson, {
+            style: (feature) => {
+              if (
+                feature.geometry &&
+                feature.geometry.type &&
+                feature.geometry.type.includes("Line")
+              )
+                return { color: "crimson", weight: 4 };
+              return { color: "#3388ff" };
+            },
+            onEachFeature: (feature, lyr) => {
+              const name =
+                feature.properties &&
+                (feature.properties.name ||
+                  feature.properties.Name ||
+                  feature.properties.description);
+              if (name) lyr.bindPopup(name);
+            },
+            pointToLayer: (feature, latlng) =>
+              L.circleMarker(latlng, {
+                radius: 5,
+                fillColor: "#3388ff",
+                fillOpacity: 0.9,
+                stroke: false,
+              }),
+          }).addTo(map);
+
+          // comprobación segura de bounds
+          if (typeof layer.getBounds === "function") {
+            const bounds = layer.getBounds();
+            if (
+              bounds && typeof bounds.isValid === "function"
+                ? bounds.isValid()
+                : bounds && bounds.isValid !== false
+            ) {
+              map.fitBounds(bounds);
+            }
           }
         } else {
-          map.setView([CENTER[0], CENTER[1]], ZOOM);
+          const geojson = JSON.parse(text);
+          const layer = L.geoJSON(geojson).addTo(map);
+          if (typeof layer.getBounds === "function") {
+            const bounds = layer.getBounds();
+            if (
+              bounds && typeof bounds.isValid === "function"
+                ? bounds.isValid()
+                : bounds && bounds.isValid !== false
+            ) {
+              map.fitBounds(bounds);
+            } else {
+              map.setView(center, zoom);
+            }
+          } else {
+            map.setView(center, zoom);
+          }
         }
+      } catch (err) {
+        console.error("Error cargando datos del mapa:", err);
       }
-    } catch (err) {
-      console.error("Error cargando datos del mapa:", err);
-    }
-  })();
+    });
+  });
 </script>
