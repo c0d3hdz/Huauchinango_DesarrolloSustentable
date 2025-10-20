@@ -6,7 +6,7 @@ difficulty: "moderado"
 image: "/image/ZempolaRuta.webp"
 duration: "2-9 horas (Depende del Tour)"
 distance: "8 km (ida y vuelta)"
-mapUrl: "https://www.google.com/maps/d/embed?mid=14QvYIFJlabxYOT3B9RzHNBumEZrTZvA&ehbc=2E312F"
+mapUrl: "/KML/Zempoala.kml"
 guideContacts:
   - name: "lorem"
     phone: "-------------"
@@ -14,16 +14,14 @@ guideContacts:
     instagram: ""
 ---
 
+import LeafletMap from "../../components/LeafletMap.astro";
+
 ## Mapa y Ubicación
-<iframe 
-  src={frontmatter.mapUrl}
-  title="Cerro de Zempoala"
-  width="50%"
-  height="450"
-  style="border:null;"
-  allowfullscreen=""
-  loading="lazy">
-</iframe>
+<LeafletMap
+  dataUrl={frontmatter.mapUrl}
+  isKml={true}
+/>
+
 ## Guías Locales Certificados
 
 Para garantizar tu seguridad y una experiencia enriquecedora, contacta a nuestros guías especializados:

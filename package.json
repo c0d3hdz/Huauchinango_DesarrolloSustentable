@@ -10,7 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^2.0.0",
     "astro": "^4.0.0",
-    "@astrojs/mdx": "^2.0.0"
+    "leaflet": "^1.9.4",
+    "togeojson": "^0.16.0"
   }
 }
