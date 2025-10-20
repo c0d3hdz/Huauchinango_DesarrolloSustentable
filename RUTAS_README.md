@@ -316,22 +316,84 @@ Para garantizar tu seguridad y una experiencia enriquecedora...
 
 ### Ventajas del mapa KML vs Google Maps
 
-**Mapa KML (LeafletMap)**:
-- ✅ Muestra el trazado exacto de la ruta
-- ✅ Interactivo: zoom, desplazamiento, popups
-- ✅ No requiere API key
-- ✅ Funciona offline una vez cargado
-- ✅ Ligero y rápido
-- ✅ Muestra elevación y puntos de interés
+**Mapa KML (LeafletMap)** - ✅ RECOMENDADO para rutas de senderismo:
+- ✅ Muestra el trazado exacto de la ruta GPS
+- ✅ Interactivo: zoom, desplazamiento, popups con información
+- ✅ No requiere API key de Google
+- ✅ Funciona en producción sin configuración adicional
+- ✅ Ligero, rápido y confiable
+- ✅ Muestra elevación y puntos de interés del archivo KML
+- ✅ Código abierto con OpenStreetMap
 
-**Google Maps embebido**:
-- ✅ Bueno para ubicaciones generales
+**Google Maps embebido** - ✅ RECOMENDADO para ubicaciones fijas:
+- ✅ Excelente para ubicaciones generales (museos, restaurantes, talleres)
 - ✅ Muestra negocios y puntos de interés de Google
-- ✅ Familiar para los usuarios
-- ❌ Requiere conexión constante
-- ❌ Limitaciones de uso gratuito
+- ✅ Interfaz familiar para los usuarios
+- ✅ Incluye Street View y direcciones
+- ⚠️ Requiere conexión constante a internet
+- ⚠️ Limitaciones de uso gratuito (pero suficiente para la mayoría de casos)
 
-### Recomendación
+### Recomendación Final
 
-- **Para rutas de senderismo**: Usa LeafletMap con archivos KML
-- **Para ubicaciones fijas** (museos, restaurantes, talleres): Usa Google Maps embebido
+**✅ Para rutas de senderismo y trekking**: Usa LeafletMap con archivos KML
+  - Ejemplo: Cerro Zempoaltépetl, rutas de montaña, senderos naturales
+  - Permite mostrar el trazado completo del camino
+
+**✅ Para ubicaciones fijas y recorridos culturales**: Usa Google Maps embebido
+  - Ejemplo: Ruta de Artesanías, tours por el centro histórico
+  - Permite a los usuarios obtener direcciones fácilmente
+
+**Ambas opciones funcionan correctamente en producción** después de las correcciones implementadas.
+
+## Solución de Problemas en Producción
+
+### Los mapas no se muestran después del despliegue
+
+**Problema resuelto**: Los archivos de Leaflet ahora están incluidos en el repositorio.
+
+**Verificación**:
+1. Asegúrate de que existe la carpeta `public/leaflet/` con:
+   - `leaflet.css`
+   - Carpeta `images/` con los iconos de marcadores
+2. Ejecuta `npm run build` localmente para verificar que todo se compile
+3. Verifica que la carpeta `dist/leaflet/` contenga los archivos después del build
+
+### El mapa de Leaflet muestra un área vacía
+
+**Causa común**: El script de inicialización no se ejecutó correctamente.
+
+**Solución**: El componente LeafletMap ha sido actualizado para manejar ambos casos:
+- Cuando el DOM ya está cargado (modo producción)
+- Cuando el DOM está cargando (modo desarrollo)
+
+### Archivos KML no se cargan
+
+**Verificación**:
+1. Asegúrate de que el archivo KML está en `public/KML/`
+2. Verifica la ruta en el frontmatter del MDX: `mapUrl: "/KML/tu-archivo.kml"`
+3. El archivo debe ser XML válido
+
+### Google Maps no se muestra
+
+**Causa**: El iframe puede estar bloqueado por políticas de seguridad en desarrollo.
+
+**Solución**: Funciona correctamente en producción. En desarrollo local, es normal ver el mensaje de bloqueo.
+
+## Changelog de Correcciones
+
+### 2024 - Correcciones de Despliegue
+
+1. **Inclusión de archivos Leaflet en el repositorio**
+   - Los archivos CSS e imágenes de Leaflet ahora se incluyen en `public/leaflet/`
+   - Eliminado `public/leaflet/` de `.gitignore`
+   - Garantiza disponibilidad en todos los entornos de producción
+
+2. **Corrección de inicialización de mapas**
+   - Actualizado `LeafletMap.astro` para soportar carga dinámica
+   - Funciona tanto en modo desarrollo como producción
+   - Maneja correctamente el estado del DOM
+
+3. **Documentación actualizada**
+   - Clarificación de cuándo usar cada tipo de mapa
+   - Ejemplos prácticos verificados
+   - Guía de solución de problemas
