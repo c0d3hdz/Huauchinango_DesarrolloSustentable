@@ -1,57 +1,15 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
 ---
 
-<BaseLayout title="Gastronomía" description="Gastronomía típica de Huauchinango">
-  <div class="hero">
+<BaseLayout
+  title="Gastronomía"
+  description="Gastronomía típica de Huauchinango"
+  color="border-bottom: 2px solid var(--pm-rojo);"
+>
+  <div class="hero" style={theme}>
     <h1>🍽️ Gastronomía de Huauchinango</h1>
     <p>Sabores tradicionales que cuentan la historia de nuestra región</p>
   </div>
-
-  <div class="cards-grid">
-    <div class="card">
-      <h2>Mole de Caderas</h2>
-      <p>Platillo tradicional preparado con carne de chivo y una mezcla especial de chiles y especias. Se disfruta especialmente durante la temporada de la matanza del chivo.</p>
-    </div>
-
-    <div class="card">
-      <h2>Acamayas</h2>
-      <p>Langostinos de río preparados de diversas formas: al mojo de ajo, a la diabla o empanizados. Un manjar de la región que no puedes perderte.</p>
-    </div>
-
-    <div class="card">
-      <h2>Truchas Frescas</h2>
-      <p>Criadas en los ríos de la región, las truchas se preparan de múltiples formas, siendo la trucha al ajillo una de las favoritas de locales y visitantes.</p>
-    </div>
-
-    <div class="card">
-      <h2>Pan Artesanal</h2>
-      <p>La panadería tradicional ofrece delicias como pan de agua, conchas y el famoso pan de pulque, elaborados con recetas ancestrales.</p>
-    </div>
-
-    <div class="card">
-      <h2>Tamales de la Sierra</h2>
-      <p>Preparados con maíz criollo y diversos rellenos como frijol, pollo con mole verde, o dulces con pasas y piñones.</p>
-    </div>
-
-    <div class="card">
-      <h2>Café de Altura</h2>
-      <p>El café cultivado en las montañas de Huauchinango tiene un sabor único. Disfrútalo recién molido y preparado de forma tradicional.</p>
-    </div>
-
-    <div class="card">
-      <h2>Hongos Silvestres</h2>
-      <p>Durante la temporada de lluvias, se recolectan diversos tipos de hongos comestibles que se preparan en quesadillas, sopas y guisos.</p>
-    </div>
-
-    <div class="card">
-      <h2>Conservas Caseras</h2>
-      <p>Mermeladas de frutas de la región, ate de membrillo y tejocote en almíbar son productos artesanales que puedes llevar a casa.</p>
-    </div>
-  </div>
-
-  <section class="mt-2">
-    <h2>Experiencia Gastronómica</h2>
-    <p>La gastronomía de Huauchinango es una mezcla de tradiciones indígenas y coloniales que se han preservado a través de generaciones. Visita los mercados locales y restaurantes tradicionales para disfrutar de una experiencia culinaria auténtica que combina ingredientes frescos de la región con recetas heredadas de nuestros ancestros.</p>
-  </section>
 </BaseLayout>

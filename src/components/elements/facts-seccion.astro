@@ -1,0 +1,77 @@
+<section class="facts">
+  <div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="49px"
+      viewBox="0 -960 960 960"
+      width="49px"
+      fill="#9b9898"
+      ><path
+        d="M40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q36 20 55 44.5t19 53.5v120H760ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm400-160q0 66-47 113t-113 47q-11 0-28-2.5t-28-5.5q27-32 41.5-71t14.5-81q0-42-14.5-81T544-792q14-5 28-6.5t28-1.5q66 0 113 47t47 113ZM120-240h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 320Zm0-400Z"
+      ></path></svg
+    >
+    <h3><span>103,946</span> Habitantes</h3>
+    <p>La población de Huauchinango es diversa y rica en tradiciones.</p>
+  </div>
+  <div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="49px"
+      viewBox="0 -960 960 960"
+      width="49px"
+      fill="#9b9898"
+      ><path
+        d="M80-80v-320l160-71v-129l200-100v-60h-80v-80h80v-80h80v80h80v80h-80v60l200 100v129l160 71v320H520v-160q0-17-11.5-28.5T480-280q-17 0-28.5 11.5T440-240v160H80Zm80-80h200v-82q0-51 35-86.5t85-35.5q50 0 85 35.5t35 86.5v82h200v-192l-160-72v-134l-160-82-160 82v134l-160 72v192Zm320-260q25 0 42.5-17.5T540-480q0-25-17.5-42.5T480-540q-25 0-42.5 17.5T420-480q0 25 17.5 42.5T480-420Zm0 20Z"
+      ></path></svg
+    >
+    <h3><span>72</span> Localidades</h3>
+    <p>Una gran diversidad de comunidades y tradiciones.</p>
+  </div>
+  <div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="49px"
+      viewBox="0 -960 960 960"
+      width="49px"
+      fill="#9b9898"
+      ><path
+        d="M440-760v-160h80v160h-80Zm266 110-56-56 113-114 56 57-113 113Zm54 210v-80h160v80H760Zm3 299L650-254l56-56 114 112-57 57ZM254-650 141-763l57-57 112 114-56 56Zm-14 450h180q25 0 42.5-17.5T480-260q0-25-17-42.5T421-320h-51l-20-48q-14-33-44-52.5T240-440q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T40-320q0-83 58.5-141.5T240-520q60 0 109.5 32.5T423-400q58 0 97.5 43T560-254q-2 57-42.5 95.5T420-120H240Zm320-134q-5-20-10-39t-10-39q45-19 72.5-59t27.5-89q0-66-47-113t-113-47q-60 0-105 39t-53 99q-20-5-41-9t-41-9q14-88 82.5-144T480-720q100 0 170 70t70 170q0 77-44 138.5T560-254Zm-79-226Z"
+      ></path></svg
+    >
+    <h3><span>1,530</span> msnm</h3>
+    <p>Ofrece paisajes impresionantes y climas templados</p>
+  </div>
+</section>
+<style>
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, calc(100% / 3));
+  }
+
+  .facts > div {
+    padding: 16px;
+    text-align: center;
+  }
+
+  .facts h3 {
+    display: flex;
+    flex-direction: column;
+    margin: 12px 0;
+    font-size: 1.5em;
+    text-wrap: wrap;
+    span {
+      font-weight: bold;
+      font-size: 3rem;
+    }
+  }
+
+  .facts p {
+    font: 1em sans-serif;
+    color: #666;
+  }
+  @media screen and (max-width: 768px) {
+    .facts {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
