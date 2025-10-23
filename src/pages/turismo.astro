@@ -7,24 +7,25 @@ var theme = "box-shadow: inset 0 0 0 1000px var(--pm-azul-oscuro);";
 
 // Get all routes and sort by type
 const allRoutes = await getCollection("routes");
-const culturalRoutes = allRoutes.filter(route => route.data.type === 'cultural');
-const hikingRoutes = allRoutes.filter(route => route.data.type === 'senderismo');
+const culturalRoutes = allRoutes.filter(
+  (route) => route.data.type === "cultural"
+);
+const hikingRoutes = allRoutes.filter(
+  (route) => route.data.type === "senderismo"
+);
 ---
-
-<style>
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--pm-azul-oscuro) var(--pm-azul-claro);
-  }
-</style>
 
 <BaseLayout
   title="Turismo"
   description="Lugares turísticos de Huauchinango"
-  color="background: linear-gradient(135deg,var( --pm-azul-claro),var(--white));"
+  color="border-bottom: 2px solid var(--pm-azul-oscuro);"
 >
   <div class="hero" style={theme}>
-    <img src="/image/turismoBanner.png" alt="" />
+    <img
+      transition:animate="fade"
+      src="/image/turismoBanner.png"
+      alt=""
+    />
     <h1 transition:name="hero" transition:animate="slide">Turismo</h1>
     <p>Descubre los lugares más hermosos y emblemáticos de nuestra región</p>
   </div>
@@ -87,27 +88,30 @@ const hikingRoutes = allRoutes.filter(route => route.data.type === 'senderismo')
   </section>
   <section class="rutas-guiadas">
     <h2>Los mejores senderos en Huauchinango</h2>
-    
+
     <div class="rutas-section">
       <h3 class="rutas-subtitle">
         <span class="subtitle-icon">🥾</span>
         Rutas de Senderismo
       </h3>
       <p class="rutas-description">
-        Explora la naturaleza de la Sierra Norte con nuestras rutas de senderismo cuidadosamente seleccionadas
+        Explora la naturaleza de la Sierra Norte con nuestras rutas de
+        senderismo cuidadosamente seleccionadas
       </p>
       <div class="card-info">
-        {hikingRoutes.map((route) => (
-          <RouteCard
-            title={route.data.title}
-            description={route.data.description}
-            type={route.data.type}
-            difficulty={route.data.difficulty}
-            image={route.data.image}
-            slug={route.slug}
-            duration={route.data.duration}
-          />
-        ))}
+        {
+          hikingRoutes.map((route) => (
+            <RouteCard
+              title={route.data.title}
+              description={route.data.description}
+              type={route.data.type}
+              difficulty={route.data.difficulty}
+              image={route.data.image}
+              slug={route.slug}
+              duration={route.data.duration}
+            />
+          ))
+        }
       </div>
     </div>
 
@@ -117,20 +121,23 @@ const hikingRoutes = allRoutes.filter(route => route.data.type === 'senderismo')
         Rutas Culturales
       </h3>
       <p class="rutas-description">
-        Descubre la riqueza histórica y cultural de Huauchinango a través de recorridos guiados
+        Descubre la riqueza histórica y cultural de Huauchinango a través de
+        recorridos guiados
       </p>
       <div class="card-info">
-        {culturalRoutes.map((route) => (
-          <RouteCard
-            title={route.data.title}
-            description={route.data.description}
-            type={route.data.type}
-            difficulty={route.data.difficulty}
-            image={route.data.image}
-            slug={route.slug}
-            duration={route.data.duration}
-          />
-        ))}
+        {
+          culturalRoutes.map((route) => (
+            <RouteCard
+              title={route.data.title}
+              description={route.data.description}
+              type={route.data.type}
+              difficulty={route.data.difficulty}
+              image={route.data.image}
+              slug={route.slug}
+              duration={route.data.duration}
+            />
+          ))
+        }
       </div>
     </div>
   </section>
@@ -138,7 +145,7 @@ const hikingRoutes = allRoutes.filter(route => route.data.type === 'senderismo')
 <style>
   .manifesto {
     display: grid;
-    grid-template-columns: 1fr 1.2fr; 
+    grid-template-columns: 1fr 1.2fr;
     gap: 4rem;
     align-items: center;
     max-width: 1200px;

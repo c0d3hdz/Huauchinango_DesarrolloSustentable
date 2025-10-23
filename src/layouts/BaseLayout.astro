@@ -1,6 +1,6 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
-import '../styles/global.css';
+import { ViewTransitions } from "astro:transitions";
+import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
@@ -8,41 +8,70 @@ interface Props {
   theme?: string;
 }
 
-const { title, description = "Turismo en Huauchinango - Descubre la región", color, theme } = Astro.props;
+const {
+  title,
+  description = "Descubre la región",
+  color,
+  theme,
+} = Astro.props;
 const currentPath = Astro.url.pathname;
-
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content={description}>
-  <ViewTransitions />
-  <title>{title} - Turismo Huauchinango</title>
-</head>
-<body>
-  <header style={color}>
-    <nav>
-      <a href="/" class="logo"><img src="/image/Logo_de_los_Pueblos_Mágicos_de_México.svg.png" alt="Pueblos Mágicos de México"> <span>Huauchinango</span></a>
-      <ul class="nav-links">
-        <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
-        <li><a href="/turismo" class={currentPath === '/turismo' ? 'active' : ''}>Turismo</a></li>
-        <li><a href="/flora" class={currentPath === '/flora' ? 'active' : ''}>Flora</a></li>
-        <li><a href="/gastronomia" class={currentPath === '/gastronomia' ? 'active' : ''}>Gastronomía</a></li>
-        <li><a href="/blog" class={currentPath.startsWith('/blog') ? 'active' : ''}>Blog</a></li>
-      </ul>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/x-icon" href="/image/logo.ico" />
+    <ViewTransitions />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header style={color}>
+      <nav>
+        <a href="/" class="logo" transition:persist="3s"
+          ><img
+            src="/image/Logo_de_los_Pueblos_Mágicos_de_México.svg.png"
+            alt="Pueblos Mágicos de México"
+          />
+          <span>Huauchinango</span></a
+        >
+        <ul class="nav-links">
+          <li>
+            <a href="/" class={currentPath === "/" ? "active" : ""}>Inicio</a>
+          </li>
+          <li>
+            <a
+              href="/turismo"
+              class={currentPath === "/turismo" ? "active" : ""}>Turismo</a>
+          </li>
+          <li>
+            <a href="/flora" class={currentPath === "/flora" ? "active" : ""}
+              >Flora</a>
+          </li>
+          <li>
+            <a
+              href="/gastronomia"
+              class={currentPath === "/gastronomia" ? "active" : ""}
+              >Gastronomía</a>
+          </li>
+          <li>
+            <a
+              href="/blog"
+              class={currentPath.startsWith("/blog") ? "active" : ""}>Blog</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-  <main>
-    <slot />
-  </main>
+    <main>
+      <slot />
+    </main>
 
-  <footer>
-    <p>&copy; 2024 Turismo Huauchinango - Desarrollo Sustentable</p>
-    <p>Sitio web informativo sobre la región de Huauchinango</p>
-  </footer>
-</body>
+    <footer>
+      <p>&copy; 2024 Turismo Huauchinango - Desarrollo Sustentable</p>
+      <p>Sitio web informativo sobre la región de Huauchinango</p>
+    </footer>
+  </body>
 </html>
