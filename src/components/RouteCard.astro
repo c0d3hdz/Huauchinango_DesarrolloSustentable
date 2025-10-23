@@ -39,7 +39,7 @@ const diffInfo = difficultyInfo[difficulty];
 <article class="route-card" data-type={type}>
   <a href={`/rutas/${slug}`} class="route-card-link">
     <div class="route-card-image">
-      <img src={image} alt={title} />
+      <img src={image} alt={title} loading="lazy" />
       <div class="route-type-badge" style={`background: ${style.gradient};`}>
         <span class="route-type-icon">{style.icon}</span>
         <span class="route-type-label">{style.label}</span>
