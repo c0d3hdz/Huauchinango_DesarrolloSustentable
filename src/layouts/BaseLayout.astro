@@ -8,12 +8,7 @@ interface Props {
   theme?: string;
 }
 
-const {
-  title,
-  description = "Descubre la región",
-  color,
-  theme,
-} = Astro.props;
+const { title, description = "Descubre la región", color, theme } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
@@ -30,7 +25,7 @@ const currentPath = Astro.url.pathname;
   <body>
     <header style={color}>
       <nav>
-        <a href="/" class="logo" transition:persist="3s"
+        <a href="/" class="logo"
           ><img
             src="/image/Logo_de_los_Pueblos_Mágicos_de_México.svg.png"
             alt="Pueblos Mágicos de México"
@@ -49,58 +44,74 @@ const currentPath = Astro.url.pathname;
           <li>
             <a
               href="/turismo"
-              class={currentPath === "/turismo" ? "active" : ""}>Turismo</a>
+              class={currentPath === "/turismo" ? "active" : ""}>Turismo</a
+            >
           </li>
           <li>
             <a href="/flora" class={currentPath === "/flora" ? "active" : ""}
-              >Flora</a>
+              >Flora</a
+            >
           </li>
           <li>
             <a
               href="/gastronomia"
               class={currentPath === "/gastronomia" ? "active" : ""}
-              >Gastronomía</a>
+              >Gastronomía</a
+            >
           </li>
           <li>
             <a
               href="/blog"
-              class={currentPath.startsWith("/blog") ? "active" : ""}>Blog</a>
+              class={currentPath.startsWith("/blog") ? "active" : ""}>Blog</a
+            >
           </li>
         </ul>
       </nav>
     </header>
     <script>
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      
-      menuToggle?.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navLinks?.classList.toggle('active');
-      });
-
-      // Close menu when clicking on a link
-      const navItems = document.querySelectorAll('.nav-links a');
-      navItems.forEach(item => {
-        item.addEventListener('click', () => {
-          menuToggle?.classList.remove('active');
-          navLinks?.classList.remove('active');
-        });
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        const target = e.target as HTMLElement;
-        if (!target.closest('nav')) {
-          menuToggle?.classList.remove('active');
-          navLinks?.classList.remove('active');
+      (function () {
+        function getToggle() {
+          return document.querySelector(".menu-toggle");
         }
-      });
+        function getNav() {
+          return document.querySelector(".nav-links");
+        }
+
+        document.addEventListener("click", function (e) {
+          const toggleClicked = (e.target as Element).closest
+            ? (e.target as Element).closest(".menu-toggle")
+            : null;
+
+          if (toggleClicked) {
+            const btn = getToggle();
+            const nav = getNav();
+            btn?.classList.toggle("active");
+            nav?.classList.toggle("active");
+            return;
+          }
+
+          const navLink = (e.target as Element).closest
+            ? (e.target as Element).closest(".nav-links a")
+            : null;
+          if (navLink) {
+            getToggle()?.classList.remove("active");
+            getNav()?.classList.remove("active");
+            return;
+          }
+
+          if (!(e.target as Element).closest || !(e.target as Element).closest("nav")) {
+            getToggle()?.classList.remove("active");
+            getNav()?.classList.remove("active");
+          }
+        });
+      })();
     </script>
+
 
     <main>
       <slot />
     </main>
+
 
     <footer>
       <p>&copy; 2024 Turismo Huauchinango - Desarrollo Sustentable</p>

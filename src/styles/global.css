@@ -139,7 +139,6 @@ nav {
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Container principal */
 main {
   max-width: 1200px;
   margin: 2rem auto;
@@ -188,63 +187,11 @@ main {
   justify-content: center;
   align-items: center;
 }
-
-/* Ajustes para tablets / móviles grandes */
-@media (max-width: 768px) {
-  .hero {
-    height: 300px;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-  }
-  .hero img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.25;
-    border-radius: 8px;
-    transform: translateX(-10%);
-  }
-  /* Asegura que el contenido quede encima de la imagen */
-  .hero > * {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 0 1rem;
-  }
-}
-
-/* Ajustes específicos para móviles pequeños */
-@media (max-width: 480px) {
-  .hero {
-    height: 220px;
-    padding: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-  .hero img {
-    width: 100%;
-    height: 100%;
-    transform: none;
-    opacity: 0.2;
-    border-radius: 6px;
-  }
-  .hero h1 {
-    font-size: 1.6rem;
-    line-height: 1.1;
-  }
-  .hero p {
-    font-size: 0.95rem;
-    max-width: 90%;
-  }
-}
-
 .hero h1 {
   font-size: 4rem;
   font-weight: bold;
   font-family: "roboto", serif;
+  text-align: center;
 }
 .hero p {
   font-size: 1.3rem;
@@ -437,9 +384,7 @@ footer {
   background-color: var(--primary-color);
 }
 
-/* Mobile and Tablet Responsive Styles */
 @media (max-width: 768px) {
-  /* Navigation */
   nav {
     padding: 0 1rem;
   }
@@ -487,7 +432,7 @@ footer {
     border-radius: 8px;
     margin-bottom: 2rem;
   }
-  
+
   .hero img {
     position: absolute;
     top: 0;
@@ -504,11 +449,11 @@ footer {
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 0 1rem;
   }
 
   .hero h1 {
     font-size: 2rem;
+    text-align: center;
   }
 
   .hero p {
@@ -520,18 +465,15 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  /* Blog content */
   .blog-content {
     padding: 1.5rem;
   }
 
-  /* Main container */
   main {
     padding: 0 1rem;
   }
 }
 
-/* Ajustes específicos para móviles pequeños */
 @media (max-width: 480px) {
   nav {
     padding: 0 0.75rem;
@@ -547,23 +489,24 @@ footer {
 
   .hero {
     height: 220px;
-    padding: 0.75rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     transform: none;
     opacity: 0.2;
-    border-radius: 6px;
   }
-  
+
   .hero h1 {
-    font-size: 1.6rem;
+    font-size: 2rem;
     line-height: 1.1;
   }
-  
+
   .hero p {
     font-size: 0.95rem;
     max-width: 90%;
@@ -571,5 +514,28 @@ footer {
 
   main {
     padding: 0 0.75rem;
+  }
+  .card {
+    &:nth-child(1) {
+      background-image: linear-gradient(
+        135deg,
+        var(--pm-azul-claro),
+        var(--white)
+      );
+    }
+    &:nth-child(2) {
+      background-image: linear-gradient(
+        135deg,
+        var(--pm-verde-olivo),
+        var(--white)
+      );
+    }
+    &:nth-child(3) {
+      background-image: linear-gradient(
+        135deg,
+        var(--pm-naranja-quemado),
+        var(--white)
+      );
+    }
   }
 }
