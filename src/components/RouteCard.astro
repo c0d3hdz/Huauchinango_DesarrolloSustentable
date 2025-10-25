@@ -2,240 +2,316 @@
 interface Props {
   title: string;
   description: string;
-  type: 'cultural' | 'senderismo';
-  difficulty: 'facil' | 'moderado' | 'dificil';
+  type: "cultural" | "senderismo";
+  difficulty: "facil" | "moderado" | "dificil";
   image: string;
   slug: string;
   duration: string;
 }
-
-const { title, description, type, difficulty, image, slug, duration } = Astro.props;
+const { title, description, type, difficulty, image, slug, duration } =
+  Astro.props;
 
 const typeStyles = {
   cultural: {
-    gradient: 'linear-gradient(135deg, var(--pm-morado-claro), var(--pm-magenta))',
-    icon: '🏛️',
-    label: 'Ruta Cultural',
-    accentColor: 'var(--pm-morado)',
+    gradient:
+      "linear-gradient(135deg, rgba(129, 77, 255, 0.9), rgba(235, 77, 136, 0.9))",
+    icon: "🏛️",
+    label: "Ruta Cultural",
+    accentColor: "var(--pm-morado)",
   },
   senderismo: {
-    gradient: 'linear-gradient(135deg, var(--pm-verde), var(--pm-azul-claro))',
-    icon: '🥾',
-    label: 'Senderismo',
-    accentColor: 'var(--pm-verde)',
+    gradient:
+      "linear-gradient(135deg, rgba(34,197,94,0.9), rgba(56,189,248,0.9))",
+    icon: "🥾",
+    label: "Senderismo",
+    accentColor: "var(--pm-verde)",
   },
 };
 
 const difficultyInfo = {
-  facil: { label: 'Fácil', icon: '○', color: '#4ade80' },
-  moderado: { label: 'Moderado', icon: '◐', color: '#fbbf24' },
-  dificil: { label: 'Difícil', icon: '●', color: '#ef4444' },
+  facil: { label: "Fácil", icon: "○", color: "#4ade80" },
+  moderado: { label: "Moderado", icon: "◐", color: "#fbbf24" },
+  dificil: { label: "Difícil", icon: "●", color: "#ef4444" },
 };
 
 const style = typeStyles[type];
 const diffInfo = difficultyInfo[difficulty];
 ---
 
-<article class="route-card" data-type={type}>
-  <a href={`/rutas/${slug}`} class="route-card-link">
-    <div class="route-card-image">
-      <img src={image} alt={title} loading="lazy" />
-      <div class="route-type-badge" style={`background: ${style.gradient};`}>
-        <span class="route-type-icon">{style.icon}</span>
-        <span class="route-type-label">{style.label}</span>
+<article
+  class="route-card"
+  data-type={type}
+  aria-labelledby={`route-${slug}-title`}
+>
+  <a href={`/rutas/${slug}`} class="route-card-link" title={title}>
+    <div class="media">
+      <img src={image} alt={title} loading="lazy" decoding="async" />
+      <div class="media-overlay" style={`background: ${style.gradient};`}></div>
+      <div class="type-badge" aria-hidden="true">
+        <span class="type-icon">{style.icon}</span>
+        <span class="type-label">{style.label}</span>
       </div>
     </div>
-    
-    <div class="route-card-content">
-      <h3 class="route-card-title">{title}</h3>
-      <p class="route-card-description">{description}</p>
-      
-      <div class="route-card-info">
-        <div class="info-item">
-          <span class="info-icon">⏱️</span>
-          <span class="info-text">{duration}</span>
+
+    <div class="card-body">
+      <h3 id={`route-${slug}-title`} class="route-title">{title}</h3>
+      <p class="route-desc" title={description}>{description}</p>
+
+      <div class="meta-row">
+        <div class="meta-item">
+          <span class="meta-icon">⏱️</span>
+          <span class="meta-text">{duration}</span>
         </div>
-        <div class="info-item difficulty">
-          <span class="info-icon" style={`color: ${diffInfo.color};`}>{diffInfo.icon}</span>
-          <span class="info-text" style={`color: ${diffInfo.color};`}>{diffInfo.label}</span>
+
+        <div
+          class="meta-item difficulty"
+          style={`--diff-color: ${diffInfo.color};`}
+        >
+          <span class="meta-icon" aria-hidden="true">{diffInfo.icon}</span>
+          <span class="meta-text">{diffInfo.label}</span>
         </div>
       </div>
-      
-      <div class="route-card-cta">
-        <span>Ver detalles</span>
-        <span class="arrow">→</span>
+
+      <div class="cta-row">
+        <button class="cta" aria-label={`Ver detalles de ${title}`}>
+          Ver detalles <span class="cta-arrow">→</span>
+        </button>
       </div>
     </div>
   </a>
 </article>
 
 <style>
-  .route-card {
-    background: var(--white);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    animation: fade-in-up linear;
-    animation-timeline: view();
-    animation-range-start: entry 10%;
-    animation-range-end: entry 40%;
-    animation-fill-mode: both;
+  :root {
+    --card-radius: 16px;
+    --card-elev: 0 10px 30px rgba(15, 23, 42, 0.12);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --text-muted: #55606a;
   }
 
-  .route-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  .route-card {
+    display: block;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    box-shadow: var(--card-elev);
+    transition:
+      transform 0.28s cubic-bezier(0.2, 0.9, 0.2, 1),
+      box-shadow 0.28s;
+    height: 450px;
+    position: relative;
+    isolation: isolate;
   }
 
   .route-card-link {
-    text-decoration: none;
     color: inherit;
-    display: block;
+    text-decoration: none;
+    grid-template-rows: 1fr auto;
+    height: 100%;
   }
 
-  .route-card-image {
+  .media {
     position: relative;
-    height: 200px;
+    height: 52%;
     overflow: hidden;
+    background: #e9eef4;
   }
 
-  .route-card-image img {
+  .media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transform-origin: center;
+    transition:
+      transform 0.7s ease,
+      filter 0.4s ease;
+    display: block;
+    filter: saturate(1.03) contrast(1.02);
   }
 
-  .route-card:hover .route-card-image img {
-    transform: scale(1.1);
+  .route-card:hover .media img,
+  .route-card:focus-within .media img {
+    transform: scale(1.08);
+    filter: saturate(1.08) contrast(1.06);
   }
 
-  .route-type-badge {
+  .media-overlay {
     position: absolute;
-    top: 12px;
+    inset: 0;
+    opacity: 0.42;
+    mix-blend-mode: multiply;
+    transition: opacity 0.28s ease;
+  }
+
+  .route-card:hover .media-overlay,
+  .route-card:focus-within .media-overlay {
+    opacity: 0.55;
+  }
+
+  .type-badge {
+    position: absolute;
     right: 12px;
-    display: flex;
+    top: 12px;
+    display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border-radius: 20px;
-    color: var(--white);
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.86rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(6px) saturate(1.1);
+  }
+
+  .card-body {
+    padding: 1.15rem 1.25rem 1.25rem;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.82),
+      rgba(255, 255, 255, 0.96)
+    );
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .route-title {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    color: #0f172a;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .route-desc {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    max-height: 3.3rem; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 4px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    background: rgba(15, 23, 42, 0.03);
     font-weight: 600;
     font-size: 0.85rem;
-    backdrop-filter: blur(4px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    color: #0b1220;
   }
 
-  .route-type-icon {
-    font-size: 1.1rem;
+  .meta-item.difficulty {
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    color: var(--diff-color);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.2)
+    );
   }
 
-  .route-card-content {
-    padding: 1.5rem;
+  .meta-icon {
+    font-size: 0.98rem;
   }
 
-  .route-card-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--pm-azul-oscuro);
-    margin-bottom: 0.75rem;
-    line-height: 1.3;
-  }
-
-  .route-card-description {
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
-    font-size: 0.95rem;
-  }
-
-  .route-card-info {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.25rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid #e5e7eb;
-  }
-
-  .info-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .info-icon {
-    font-size: 1.1rem;
-  }
-
-  .info-text {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #666;
-  }
-
-  .difficulty .info-icon {
-    font-size: 1.3rem;
-  }
-
-  .route-card-cta {
+  .cta-row {
+    margin-top: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-weight: 600;
-    color: var(--pm-azul-oscuro);
-    font-size: 0.95rem;
   }
 
-  .arrow {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
+  .cta {
+    background: transparent;
+    border: 2px solid transparent;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: var(--pm-azul-oscuro, #0f172a);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease,
+      background 0.18s ease;
   }
 
-  .route-card:hover .arrow {
-    transform: translateX(4px);
+  .cta:hover,
+  .cta:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    background: rgba(255, 255, 255, 0.9);
   }
 
-  /* Specific styles for route types */
-  .route-card[data-type="cultural"] .route-card-title {
+  .cta-arrow {
+    display: inline-block;
+    transition: transform 0.18s ease;
+  }
+
+  .route-card:hover .cta-arrow,
+  .route-card:focus-within .cta-arrow {
+    transform: translateX(6px);
+  }
+
+  /* Type specific accents (keeps logic in data-type) */
+  .route-card[data-type="cultural"] .cta {
     color: var(--pm-morado);
   }
-
-  .route-card[data-type="cultural"] .route-card-cta {
-    color: var(--pm-morado);
-  }
-
-  .route-card[data-type="senderismo"] .route-card-title {
+  .route-card[data-type="senderismo"] .cta {
     color: var(--pm-verde);
   }
 
-  .route-card[data-type="senderismo"] .route-card-cta {
-    color: var(--pm-verde);
+  /* Focus accessibility */
+  .route-card:focus-within {
+    outline: 3px solid rgba(99, 102, 241, 0.12);
+    outline-offset: 4px;
   }
 
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
+  /* Small screens */
+  @media (max-width: 780px) {
+    .route-card {
+      min-height: 240px;
+      display: block;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    .media {
+      height: 46%;
+    }
+    .route-desc {
+      -webkit-line-clamp: 3;
+      max-height: 4.6rem;
     }
   }
 
-  @media (max-width: 768px) {
-    .route-card-image {
-      height: 180px;
+  /* Very small / list mode */
+  @media (max-width: 420px) {
+    .media {
+      height: 44%;
     }
-
-    .route-card-title {
-      font-size: 1.2rem;
+    .route-title {
+      font-size: 1rem;
     }
-
-    .route-card-info {
-      flex-direction: column;
-      gap: 0.75rem;
+    .route-card {
+      border-radius: 12px;
     }
   }
 </style>
