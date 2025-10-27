@@ -4,6 +4,12 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "Urban Graffiti";
+  src: url("/fuentes/Urban Heroes.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   margin: 0;
   padding: 0;
@@ -405,7 +411,7 @@ footer {
 .btn-secondary:hover {
   background-color: var(--accent-color);
 }
-.info-blog h2{
+.info-blog h2 {
   color: var(--pm-morado);
   margin-bottom: 1rem;
 }

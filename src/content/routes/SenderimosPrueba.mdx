@@ -1,35 +1,52 @@
 ---
-title: "Cerro Zempoaltepetl"
-description: "El Cerro Zempoaltépetl, que en náhuatl significa veinte cerros o cerro grande, es uno de los picos más emblemáticos de la Sierra Norte de Puebla. Ofrece a los senderistas una experiencia única, con vistas panorámicas espectaculares y un entorno natural de gran belleza."
+title: "Cerro de Zempoala"
+description: "El Cerro de Zempoala, que en náhuatl significa veinte cerros o cerro grande, es uno de los picos más emblemáticos de la Sierra Norte de Puebla. Ofrece a los senderistas una experiencia única, con vistas panorámicas espectaculares y un entorno natural de gran belleza."
 type: "senderismo"
 difficulty: "moderado"
 image: "/image/ZempolaRuta.webp"
 duration: "2-9 horas (Depende del Tour)"
 distance: "8 km (ida y vuelta)"
-mapUrl: "/KML/Zempoala.kml"
+mapUrl: "https://www.google.com/maps/d/embed?mid=14QvYIFJlabxYOT3B9RzHNBumEZrTZvA&ehbc=2E312F"
 guideContacts:
-  - name: "lorem"
-    phone: "-------------"
-    email: ""
-    instagram: ""
+  - nombre: "Guía Local"
+    telefono: " 77777777"
+    imagenPerfil: "url_de_la_imagen"
+    instagram: "url_de_instagram"
 ---
+<iframe
+  src={frontmatter.mapUrl}
+  width="100%"
+  height="350"
+  style={{ border: 0 }}
+  allowFullScreen="9"
+  loading="lazy"
+></iframe>
+<div className="galeria-ruta">
+  <div className="div1">
+    <img src="/image/Gallery/cerroZempoala/ZempolaRuta1.jpg" alt="Cerro de Zempoala" />
+  </div>
+  <div className="div2">
+    <img src="/image/Gallery/cerroZempoala/ZempolaRuta2.jpg" alt="Cerro de Zempoala" />
+  </div>
+  <div className="div3">
+    <img src="/image/Gallery/cerroZempoala/ZempolaRuta3.jpg" alt="Cerro de Zempoala" />
+  </div>
+</div>
 
-## Guías Locales Certificados
+## Itinerario sugerido
+1. *Inicio de la Ruta*: Comienza en el punto de acceso designado.
+2. *Ascenso*: Sigue el sendero marcado hacia la cumbre, disfrutando de las vistas.
+3. *Cumbre*: Llega a la cima y toma un tiempo para descansar y disfrutar del paisaje.
+4. *Descenso*: Regresa por el mismo camino.
 
-Para garantizar tu seguridad y una experiencia enriquecedora, contacta a nuestros guías especializados:
+### Guías Locales
+Apoya a la comunidad local contactando a nuestros guías especializados:
 
 {frontmatter.guideContacts && frontmatter.guideContacts.map(guide => (
-  <div key={guide.name} style="margin-bottom: 1rem;">
-    <strong>{guide.name}</strong>
-    <br />
-    📞 Teléfono: {guide.phone}
-    {guide.email && (
-      <>
-        <br />
-        📧 Email: {guide.email}
-      </>
-    )}
-  </div>
+  <a key={guide.nombre} className="guia-contacto" href={guide.instagram} target="_blank" rel="noopener noreferrer">
+    <img className="guia-imagen" src={guide.imagenPerfil} alt={guide.nombre} />
+    <strong className="guia-nombre">{guide.nombre}</strong>
+    <span className="guia-telefono">📞 {guide.telefono}</span>
+  </a>
 ))}
 
-**Importante**: Este sendero se encuentra en una zona natural protegida. Tu cooperación es esencial para preservar este ecosistema para futuras generaciones.

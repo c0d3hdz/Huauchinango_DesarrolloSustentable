@@ -1,10 +1,9 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const routes = await getCollection('routes');
+  const routes = await getCollection("routes");
   return routes.map((route) => ({
     params: { slug: route.slug },
     props: { route },
@@ -16,43 +15,44 @@ const { Content } = await route.render();
 
 const typeStyles = {
   cultural: {
-    gradient: 'linear-gradient(135deg, var(--pm-morado-claro), var(--pm-magenta))',
-    icon: '🏛️',
-    label: 'Ruta Cultural',
-    primaryColor: 'var(--pm-morado)',
+    gradient: "2px solid var(--pm-morado-claro)",
+    icon: "🏛️",
+    label: "Ruta Cultural",
+    primaryColor: "var(--pm-morado)",
   },
   senderismo: {
-    gradient: 'linear-gradient(135deg, var(--pm-verde), var(--pm-azul-claro))',
-    icon: '🥾',
-    label: 'Senderismo',
-    primaryColor: 'var(--pm-verde)',
+    gradient: "2px solid var(--pm-verde)",
+    icon: "🥾",
+    label: "Senderismo",
+    primaryColor: "var(--pm-verde)",
   },
 };
 
 const difficultyInfo = {
-  facil: { label: 'Fácil', icon: '○', color: '#4ade80' },
-  moderado: { label: 'Moderado', icon: '◐', color: '#fbbf24' },
-  dificil: { label: 'Difícil', icon: '●', color: '#ef4444' },
+  facil: { label: "Fácil", icon: "○", color: "#4ade80" },
+  moderado: { label: "Moderado", icon: "◐", color: "#fbbf24" },
+  dificil: { label: "Difícil", icon: "●", color: "#ef4444" },
 };
 
 const style = typeStyles[route.data.type];
 const diffInfo = difficultyInfo[route.data.difficulty];
+const shadowText = `0 0px 40px ${style.primaryColor}`;
 ---
 
-<BaseLayout 
-  title={route.data.title} 
+<BaseLayout
+  title={route.data.title}
   description={route.data.description}
-  color={`background: ${style.gradient};`}
+  color={`border-bottom: ${style.gradient};`}
 >
-  <div class="route-hero" style={`background-image:url(${route.data.image});`}>
+  <div transition:animate="fade" transition:name="rutaImagen" class="route-hero" style={`background-image:url(${route.data.image});`}>
     <div class="route-hero-content">
       <div class="route-type-badge">
         <span class="badge-icon">{style.icon}</span>
         <span class="badge-text">{style.label}</span>
       </div>
-      <h1>{route.data.title}</h1>
+      <h1 style={`text-shadow: ${shadowText};`}>{route.data.title}</h1>
       <p class="hero-description">{route.data.description}</p>
-      
+
       <div class="route-meta">
         <div class="meta-item">
           <span class="meta-icon">⏱️</span>
@@ -61,22 +61,30 @@ const diffInfo = difficultyInfo[route.data.difficulty];
             <span class="meta-value">{route.data.duration}</span>
           </div>
         </div>
-        
-        {route.data.distance && (
-          <div class="meta-item">
-            <span class="meta-icon">📏</span>
-            <div>
-              <span class="meta-label">Distancia</span>
-              <span class="meta-value">{route.data.distance}</span>
+
+        {
+          route.data.distance && (
+            <div class="meta-item">
+              <span class="meta-icon">📏</span>
+              <div>
+                <span class="meta-label">Distancia</span>
+                <span class="meta-value">{route.data.distance}</span>
+              </div>
             </div>
-          </div>
-        )}
-        
+          )
+        }
+
         <div class="meta-item">
-          <span class="meta-icon" style={`color: ${diffInfo.color}; font-size: 1.5rem;`}>{diffInfo.icon}</span>
+          <span
+            class="meta-icon"
+            style={`color: ${diffInfo.color}; font-size: 1.5rem;`}
+            >{diffInfo.icon}</span
+          >
           <div>
             <span class="meta-label">Dificultad</span>
-            <span class="meta-value" style={`color: ${diffInfo.color};`}>{diffInfo.label}</span>
+            <span class="meta-value" style={`color: ${diffInfo.color};`}
+              >{diffInfo.label}</span
+            >
           </div>
         </div>
       </div>
@@ -84,9 +92,8 @@ const diffInfo = difficultyInfo[route.data.difficulty];
   </div>
   <article class="route-content" data-type={route.data.type}>
     <Content />
-    
     <div class="route-actions">
-      <a href="/turismo" class="btn btn-back">← Volver a Turismo</a>
+      <a href="/turismo" class="btn btn-back">← Volver</a>
     </div>
   </article>
 </BaseLayout>
@@ -98,6 +105,8 @@ const diffInfo = difficultyInfo[route.data.difficulty];
     border-radius: 16px;
     margin-bottom: 2rem;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    background-position: center;
+    background-size: cover;
   }
 
   .route-hero-content {
@@ -123,11 +132,12 @@ const diffInfo = difficultyInfo[route.data.difficulty];
   }
 
   .route-hero h1 {
+    text-transform: uppercase;
+    font-family: "Urban Graffiti", sans-serif;
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 1rem;
     line-height: 1.2;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   .hero-description {
@@ -177,6 +187,38 @@ const diffInfo = difficultyInfo[route.data.difficulty];
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     max-width: 900px;
     margin: 0 auto 2rem;
+    .galeria-ruta {
+      width: 100%;
+      height: 30rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+      overflow: hidden;
+      border-radius: .5rem;
+      div img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+      }
+    }
+    .div1 {
+      grid-area: 1 / 1 / 6 / 4;
+      width: 100%;
+      height: 100%;
+    }
+    .div2 {
+      grid-area: 3 / 4 / 6 / 6;
+      width: 100%;
+      height: 100%;
+    }
+    .div3 {
+      grid-area: 1 / 4 / 3 / 6;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .route-content :global(h1) {

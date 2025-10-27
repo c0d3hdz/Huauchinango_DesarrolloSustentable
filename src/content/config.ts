@@ -23,9 +23,10 @@ const routes = defineCollection({
     distance: z.string().optional(),
     mapUrl: z.string().optional(),
     guideContacts: z.array(z.object({
-      name: z.string(),
-      phone: z.string(),
-      email: z.string().optional(),
+      nombre: z.string(),
+      instagram: z.string(),
+      telefono: z.string().optional(),
+      imagenPerfil: z.string().optional(),
     })).optional(),
   }),
 });
