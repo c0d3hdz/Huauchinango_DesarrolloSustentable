@@ -14,7 +14,9 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
       alt="Gastronomía de Huauchinango"
       loading="lazy"
     />
-    <h1>🍽️ Gastronomía de Huauchinango</h1>
+    <h1 transition:name="hero" transition:animate="slide">
+      Gastronomía de Huauchinango
+    </h1>
     <p>Sabores tradicionales que cuentan la historia de nuestra región</p>
   </div>
 
@@ -22,16 +24,16 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
     <section class="presentation-gastro" aria-labelledby="gastro-title">
       <h2 id="gastro-title">La gastronomía de Huauchinango</h2>
       <p class="lead">
-        La cocina de Huauchinango es un reflejo de su riqueza natural y cultural.
-        Ubicada en la <strong>Sierra Norte de Puebla</strong>, esta región ha
-        desarrollado una tradición culinaria única que combina ingredientes
-        ancestrales con técnicas heredadas de generación en generación.
+        La cocina de Huauchinango es un reflejo de su riqueza natural y
+        cultural. Ubicada en la <strong>Sierra Norte de Puebla</strong>, esta
+        región ha desarrollado una tradición culinaria única que combina
+        ingredientes ancestrales con técnicas heredadas de generación en
+        generación.
       </p>
       <p class="lead">
         Los platillos tradicionales de Huauchinango destacan por el uso de
-        productos locales como chiles de la región, hierbas aromáticas de la
-        sierra, y carnes de animales criados en los valles cercanos. La
-        gastronomía no solo nutre el cuerpo, sino que también mantiene vivas las
+        productos locales como chiles de la región y hierbas aromáticas de la
+        sierra. La gastronomía no solo nutre el cuerpo, sino que también mantiene vivas las
         tradiciones y fortalece la identidad cultural del pueblo.
       </p>
     </section>
@@ -45,21 +47,7 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
       <div class="platillos-grid">
         <article class="platillo-card">
           <div class="platillo-body">
-            <h3>🥘 Mole de Caderas</h3>
-            <p>
-              El platillo más emblemático de la región. Se prepara con caderas
-              de chivo de castilla, chiles de la región y especias tradicionales.
-              Su preparación es todo un ritual que se lleva a cabo durante la
-              temporada de la matanza (octubre-noviembre).
-            </p>
-            <strong>Temporada:</strong>
-            <span>Octubre y Noviembre</span>
-          </div>
-        </article>
-
-        <article class="platillo-card">
-          <div class="platillo-body">
-            <h3>🌮 Tlacoyos de Frijol y Haba</h3>
+            <h3>Tlacoyos de Frijol y Haba</h3>
             <p>
               Tortillas gruesas de maíz rellenas de frijol o haba, acompañadas
               con nopales, queso fresco, salsa verde y cilantro. Un desayuno
@@ -69,23 +57,9 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
             <span>Mercado Municipal, puestos de antojitos</span>
           </div>
         </article>
-
         <article class="platillo-card">
           <div class="platillo-body">
-            <h3>🍲 Acamayas en Caldo</h3>
-            <p>
-              Langostinos de río preparados en un caldo aromático con chiles y
-              especias. Las acamayas se pescan en los ríos de la región y son
-              muy apreciadas por su sabor único y delicado.
-            </p>
-            <strong>Ingrediente especial:</strong>
-            <span>Acamayas frescas de los ríos locales</span>
-          </div>
-        </article>
-
-        <article class="platillo-card">
-          <div class="platillo-body">
-            <h3>🫔 Tamales de la Sierra</h3>
+            <h3>Tamales</h3>
             <p>
               Variedad de tamales hechos con masa de maíz nixtamalizado y
               rellenos de diferentes guisos: mole, rajas con queso, frijol negro
@@ -99,7 +73,7 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
 
         <article class="platillo-card">
           <div class="platillo-body">
-            <h3>🐟 Trucha de la Región</h3>
+            <h3>Trucha de la Región</h3>
             <p>
               Truchas frescas de los criaderos locales, preparadas al gusto:
               empapeladas, a la mantequilla, al mojo de ajo o enchiladas. Se
@@ -112,7 +86,7 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
 
         <article class="platillo-card">
           <div class="platillo-body">
-            <h3>🌶️ Pipián Verde</h3>
+            <h3>Pipián Verde</h3>
             <p>
               Salsa tradicional elaborada con pepita de calabaza, chiles verdes
               y hierbas aromáticas. Se sirve con carne de cerdo o pollo, y es un
@@ -125,99 +99,9 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
       </div>
     </section>
 
-    <section class="bebidas" aria-labelledby="bebidas-title">
-      <h2 id="bebidas-title">Bebidas Tradicionales</h2>
-      
-      <div class="bebidas-grid">
-        <div class="info-card">
-          <h4>☕ Café de la Sierra</h4>
-          <p>
-            Café cultivado en las montañas de la región, de altura y con un
-            sabor suave y aromático. Se sirve en las fondas y cafeterías locales.
-          </p>
-        </div>
-        
-        <div class="info-card">
-          <h4>🍺 Yolixpa</h4>
-          <p>
-            Bebida prehispánica fermentada elaborada con maíz. Es refrescante y
-            ligeramente dulce, perfecta para acompañar los días calurosos.
-          </p>
-        </div>
-        
-        <div class="info-card">
-          <h4>🌿 Té de Hierbas</h4>
-          <p>
-            Infusiones de hierbas aromáticas locales como el toronjil, hierbabuena,
-            manzanilla y canela. Tienen propiedades medicinales y digestivas.
-          </p>
-        </div>
-        
-        <div class="info-card">
-          <h4>🍫 Chocolate de Metate</h4>
-          <p>
-            Chocolate artesanal molido en metate con canela y azúcar. Se prepara
-            caliente y espumoso, ideal para acompañar pan dulce o tamales.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="dulces" aria-labelledby="dulces-title">
-      <h2 id="dulces-title">Dulces y Postres</h2>
-      
-      <div class="content-section">
-        <div class="dulces-list">
-          <div class="dulce-item">
-            <span class="dulce-icon">🍮</span>
-            <div>
-              <h4>Conservas de Frutas</h4>
-              <p>
-                Chilacayote, calabaza, tejocote y camote en almíbar, preparadas
-                de forma artesanal con piloncillo y canela.
-              </p>
-            </div>
-          </div>
-
-          <div class="dulce-item">
-            <span class="dulce-icon">🥖</span>
-            <div>
-              <h4>Pan de Fiesta</h4>
-              <p>
-                Pan tradicional que se elabora para las festividades patronales.
-                Tiene forma de muñeco o animal y está decorado con azúcar de colores.
-              </p>
-            </div>
-          </div>
-
-          <div class="dulce-item">
-            <span class="dulce-icon">🍯</span>
-            <div>
-              <h4>Miel de Abeja de la Sierra</h4>
-              <p>
-                Miel artesanal producida por abejas que polinizan las flores de
-                la región. Tiene un sabor único y propiedades medicinales.
-              </p>
-            </div>
-          </div>
-
-          <div class="dulce-item">
-            <span class="dulce-icon">🍪</span>
-            <div>
-              <h4>Galletas de Anís</h4>
-              <p>
-                Galletas crujientes aromatizadas con anís y piloncillo, horneadas
-                en hornos de leña tradicionales.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="sustentabilidad" aria-labelledby="sustentabilidad-title">
       <h2 id="sustentabilidad-title">Gastronomía Sustentable</h2>
-      
+
       <div class="content-section">
         <p class="lead">
           La gastronomía de Huauchinango se caracteriza por su enfoque en la
@@ -265,7 +149,8 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
               <h4>Preservación Cultural</h4>
               <p>
                 Las recetas tradicionales se transmiten de generación en
-                generación, manteniendo viva la identidad culinaria de la región.
+                generación, manteniendo viva la identidad culinaria de la
+                región.
               </p>
             </div>
           </div>
@@ -275,32 +160,22 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
 
     <section class="visita" aria-labelledby="visita-title">
       <h2 id="visita-title">Experiencias Gastronómicas</h2>
-      
+
       <div class="experiencias-grid">
         <div class="experiencia-card">
-          <h3>🍴 Visita al Mercado Municipal</h3>
+          <h3>Visita al Mercado Municipal</h3>
           <p>
             Recorre el mercado tradicional donde podrás encontrar ingredientes
             frescos, probar antojitos locales y conocer a los productores de la
             región. Los fines de semana hay mayor variedad de productos.
           </p>
         </div>
-
         <div class="experiencia-card">
-          <h3>👨‍🍳 Talleres de Cocina Tradicional</h3>
+          <h3>Festividades Gastronómicas</h3>
           <p>
-            Algunas familias y restaurantes ofrecen talleres donde aprenderás a
-            preparar platillos tradicionales usando técnicas ancestrales como
-            el molido en metate y la cocción en ollas de barro.
-          </p>
-        </div>
-
-        <div class="experiencia-card">
-          <h3>🎉 Festividades Gastronómicas</h3>
-          <p>
-            Durante las fiestas patronales y la Feria de las Flores, se organizan
-            eventos especiales donde puedes degustar platillos típicos y participar
-            en concursos de cocina tradicional.
+            Durante las fiestas patronales y la Feria de las Flores, se
+            organizan eventos especiales donde puedes degustar platillos típicos
+            y participar en concursos de cocina tradicional.
           </p>
         </div>
       </div>
@@ -312,13 +187,13 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
   .presentation-gastro {
     margin-top: 1.75rem;
   }
-  
+
   .presentation-gastro h2 {
     color: var(--pm-naranja-quemado);
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .lead {
     margin: 0 0 1rem 0;
     color: #3d2817;
@@ -328,13 +203,13 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
   .platillos {
     margin-top: 2.5rem;
   }
-  
+
   .platillos h2 {
     color: var(--pm-naranja-quemado);
     font-size: 1.8rem;
     margin-bottom: 0.25rem;
   }
-  
+
   .muted {
     color: #76695a;
     margin: 0 0 1.5rem 0;
@@ -346,40 +221,42 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
     gap: 1.25rem;
     margin-top: 1rem;
   }
-  
+
   .platillo-card {
     background: #fff;
     border-radius: 12px;
     padding: 1.25rem;
     box-shadow: 0 4px 12px rgba(61, 40, 23, 0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
     border-left: 4px solid var(--pm-naranja-quemado);
   }
-  
+
   .platillo-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(61, 40, 23, 0.15);
   }
-  
+
   .platillo-body h3 {
     color: var(--pm-naranja-quemado);
     font-size: 1.3rem;
     margin-bottom: 0.75rem;
   }
-  
+
   .platillo-body p {
     color: #4a3f2f;
     line-height: 1.6;
     margin-bottom: 0.75rem;
   }
-  
+
   .platillo-body strong {
     color: #3d2817;
     display: block;
     margin-top: 0.5rem;
     font-size: 0.9rem;
   }
-  
+
   .platillo-body span {
     color: #76695a;
     font-size: 0.9rem;
@@ -388,13 +265,13 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
   .bebidas {
     margin-top: 2.5rem;
   }
-  
+
   .bebidas h2 {
     color: var(--pm-naranja-quemado);
     font-size: 1.8rem;
     margin-bottom: 1rem;
   }
-  
+
   .bebidas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -404,19 +281,19 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
   .dulces {
     margin-top: 2.5rem;
   }
-  
+
   .dulces h2 {
     color: var(--pm-naranja-quemado);
     font-size: 1.8rem;
     margin-bottom: 1rem;
   }
-  
+
   .dulces-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
   }
-  
+
   .dulce-item {
     display: flex;
     gap: 1rem;
@@ -425,18 +302,18 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(61, 40, 23, 0.06);
   }
-  
+
   .dulce-icon {
     font-size: 2rem;
     flex-shrink: 0;
   }
-  
+
   .dulce-item h4 {
     color: var(--pm-naranja-quemado);
     margin: 0 0 0.5rem 0;
     font-size: 1.1rem;
   }
-  
+
   .dulce-item p {
     color: #4a3f2f;
     margin: 0;
@@ -450,37 +327,37 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
     padding: 2rem;
     border-radius: 12px;
   }
-  
+
   .sustentabilidad h2 {
     color: var(--pm-naranja-quemado);
     font-size: 1.8rem;
     margin-bottom: 1rem;
   }
-  
+
   .sustentabilidad-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.25rem;
     margin-top: 1rem;
   }
-  
+
   .sustentabilidad-item {
     display: flex;
     gap: 1rem;
     align-items: start;
   }
-  
+
   .sustentabilidad-item .icon {
     font-size: 2rem;
     flex-shrink: 0;
   }
-  
+
   .sustentabilidad-item h4 {
     color: #3d2817;
     margin: 0 0 0.5rem 0;
     font-size: 1.1rem;
   }
-  
+
   .sustentabilidad-item p {
     color: #4a3f2f;
     margin: 0;
@@ -491,32 +368,32 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
   .visita {
     margin-top: 2.5rem;
   }
-  
+
   .visita h2 {
     color: var(--pm-naranja-quemado);
     font-size: 1.8rem;
     margin-bottom: 1rem;
   }
-  
+
   .experiencias-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.25rem;
   }
-  
+
   .experiencia-card {
     background: #fff;
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 4px 12px rgba(61, 40, 23, 0.08);
   }
-  
+
   .experiencia-card h3 {
     color: var(--pm-naranja-quemado);
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
   }
-  
+
   .experiencia-card p {
     color: #4a3f2f;
     line-height: 1.6;
@@ -528,20 +405,22 @@ var theme = "box-shadow: inset 0 0 30rem 100px var(--pm-naranja-quemado);";
     border-radius: 12px;
     padding: 1rem;
     box-shadow: 0 4px 12px rgba(61, 40, 23, 0.06);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
   }
-  
+
   .info-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(61, 40, 23, 0.12);
   }
-  
+
   .info-card h4 {
     color: var(--pm-naranja-quemado);
     margin: 0 0 0.5rem 0;
     font-size: 1.1rem;
   }
-  
+
   .info-card p {
     color: #4a3f2f;
     margin: 0;

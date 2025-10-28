@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const blogPosts = await getCollection('blog');
+  const blogPosts = await getCollection("blog");
   return blogPosts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -16,17 +16,20 @@ const { Content } = await post.render();
 
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="blog-content">
-    <h1>{post.data.title}</h1>
+    <h1 style={{ color: post.data.colortheme }}>{post.data.title}</h1>
     <p class="date">
-      {post.data.date.toLocaleDateString('es-MX', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-      })} - {post.data.author}
+      {
+        post.data.date.toLocaleDateString("es-MX", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      } - {post.data.author}
     </p>
     <Content />
-    <div class="mt-2">
-      <a href="/blog" class="btn">← Volver al Blog</a>
+    <div class="button-blog">
+      <a href="/blog">← Volver al Blog</a>
     </div>
   </article>
 </BaseLayout>
+

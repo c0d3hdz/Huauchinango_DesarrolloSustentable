@@ -8,6 +8,7 @@ const blog = defineCollection({
     date: z.date(),
     author: z.string().default('Desconocido'),
     image: z.string().optional(),
+    colortheme: z.string().default('light'),
   }),
 });
 
