@@ -2,17 +2,330 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 var theme = "box-shadow: inset 0 0 0 1000px var(--pm-verde-olivo);";
 ---
+
 <BaseLayout
   title="Flora"
   description="Flora y vegetación de Huauchinango"
   color="border-bottom: 2px solid var(--pm-verde-olivo);"
 >
   <div class="hero" style={theme}>
-    <img src="/image/floraBanner.jpg" alt="Flora de Huauchinango" loading="lazy" />
+    <img
+      src="/image/floraBanner.jpg"
+      alt="Flora de Huauchinango"
+      loading="lazy"
+    />
     <h1 transition:name="hero" transition:animate="slide">
       Flora de Huauchinango
     </h1>
 
     <p>Conoce la diversidad botánica de nuestra región</p>
   </div>
+  <main class="container">
+    <section class="presentation-flora" aria-labelledby="flora-title">
+      <h2 id="flora-title">La flora de Huauchinango</h2>
+      <p class="lead">
+        Se caracteriza por una <strong>exuberante biodiversidad</strong>,
+        resultado de su ubicación en la Sierra Norte y su clima
+        predominantemente templado y húmedo. Se puede resumir su vegetación en
+        dos grandes grupos: los ecosistemas nativos (bosques) y la importante
+        actividad de floricultura.
+      </p>
+      <div class="content-section">
+        <h3><a href="">Ecosistemas Nativos 🔗</a></h3>
+        <p>
+          La vegetación silvestre de Huauchinango es dominada por bosques
+          húmedos de montaña.
+        </p>
+      </div>
+      <div class="ecosystems-grid">
+        <article class="eco-card">
+          <figure>
+            <img
+              src="/image/BosqueNiebla.jpg"
+              alt="Bosque de niebla en Huauchinango"
+              loading="lazy"
+            />
+          </figure>
+          <div class="eco-body">
+            Este es el ecosistema más representativo y de mayor biodiversidad.
+            Debido a la constante humedad y neblina, es un refugio para una gran
+            cantidad de especies epífitas (plantas que crecen sobre otras).
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="species" aria-labelledby="species-title">
+      <h2 id="species-title">Especies destacadas</h2>
+      <p class="muted">
+        Algunas especies que podrás encontrar en recorridos y senderos.
+      </p>
+
+      <div class="species-grid">
+        <figure class="species-card">
+          <img
+            src="/image/Liquidámbar.jpg"
+            alt="Liquidámbar hoja y tronco"
+            loading="lazy"
+          />
+          <figcaption>
+            <strong>Liquidámbar</strong>
+            <span class="caption-muted">Árbol caducifolio, hojas lobuladas</span
+            >
+          </figcaption>
+        </figure>
+
+        <figure class="species-card">
+          <img
+            src="/image/Encinos.jpeg"
+            alt="Encinos en la sierra"
+            loading="lazy"
+          />
+          <figcaption>
+            <strong>Encinos</strong>
+            <span class="caption-muted">Diversas especies de Quercus</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="floricultura" aria-labelledby="floricultura-title">
+      <h2 id="floricultura-title">Floricultura en Huauchinango</h2>
+      <p class="lead">
+        Huauchinango es famoso a nivel nacional por su vocación florícola,
+        siendo sede de la <strong>"Feria de las Flores"</strong>. Esta actividad
+        económica define su paisaje cultural y representa una de las principales
+        actividades de la región.
+      </p>
+
+      <article class="eco-card">
+        <figure>
+          <img
+            src="/image/feriaFlores.jpeg"
+            alt="Cultivo de flores en Huauchinango"
+            loading="lazy"
+          />
+        </figure>
+        <div class="eco-body">
+          <h3>Flora Cultivada</h3>
+          <strong>Especies Emblemáticas</strong>
+          <p>
+            La azalea es quizás la flor más icónica de la región, aunque se
+            cultiva una enorme variedad de plantas ornamentales.
+          </p>
+        </div>
+      </article>
+
+      <div class="content-section">
+        <h3>Principales Cultivos Ornamentales</h3>
+        <div class="species-grid">
+          <div class="info-card">
+            <h4>🌸 Orquídeas</h4>
+            <p>
+              Cultivadas, además de las silvestres que crecen naturalmente en la
+              región.
+            </p>
+          </div>
+          <div class="info-card">
+            <img src="image/Camelias.jpg" alt="Camelias" />
+            <h4>🌺 Camelias</h4>
+            <p>Flores elegantes muy apreciadas por su belleza y resistencia.</p>
+          </div>
+          <div class="info-card">
+            <img src="image/Hortensias.jpg" alt="Hortensias" />
+            <h4>🌼 Hortensias</h4>
+            <p>Flores abundantes en diversos colores según el pH del suelo.</p>
+          </div>
+          <div class="info-card">
+            <img src="image/Begonias.webp" alt="Begonias" />
+            <h4>🌿 Begonias</h4>
+            <p>Gran variedad de especies cultivadas por su follaje y flores.</p>
+          </div>
+          <div class="info-card">
+            <img src="image/Alcatraces.jpg" alt="Alcatraces" />
+            <h4>🥀 Alcatraces</h4>
+            <p>Flores elegantes muy demandadas en arreglos florales.</p>
+          </div>
+          <div class="info-card">
+            <img src="image/Nochebuenas.webp" alt="Nochebuenas" />
+            <h4>⭐ Nochebuenas</h4>
+            <p>
+              Cultivo especialmente importante durante la temporada navideña.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </BaseLayout>
+
+<style>
+  .presentation-flora {
+    margin-top: 1.75rem;
+    a {
+      text-decoration: none;
+      color: var(--pm-verde);
+      font-size: 1.5rem;
+    }
+  }
+  .presentation-flora h2 {
+    color: var(--pm-verde);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .lead {
+    margin: 0 0 1rem 0;
+    color: #27403a;
+    line-height: 1.6;
+  }
+
+  .ecosystems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .eco-card {
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .eco-card figure {
+    margin: 0;
+  }
+  .eco-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  /* Species grid */
+  .species {
+    margin-top: 2rem;
+  }
+  .species h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
+  }
+  .muted {
+    color: #647069;
+    margin: 0 0 1rem 0;
+  }
+
+  .species-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .species-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(11, 20, 32, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .species-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+  }
+  .species-card figcaption {
+    padding: 0.6rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .caption-muted {
+    color: #6b7370;
+    font-size: 0.9rem;
+  }
+
+  /* Content sections */
+  .content-section {
+    margin: 2rem 0 1.5rem 0;
+  }
+  .content-section h3 {
+    color: var(--pm-verde);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .content-section p {
+    color: #27403a;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(11, 20, 32, 0.06);
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+  }
+  .info-card img {
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+  }
+  .info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(11, 20, 32, 0.12);
+  }
+  .info-card h4 {
+    color: var(--pm-verde);
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  .info-card p {
+    color: #647069;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Eco body section */
+  .eco-body {
+    padding: 0.75rem;
+  }
+  .eco-body h3 {
+    color: var(--pm-verde);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .eco-body strong {
+    color: #27403a;
+    display: block;
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+  .eco-body p {
+    color: #647069;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Floricultura section */
+  .floricultura {
+    margin-top: 2.5rem;
+  }
+  .floricultura h2 {
+    color: var(--pm-verde);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 720px) {
+    .eco-card img {
+      height: 140px;
+    }
+    .species-card img {
+      height: 120px;
+    }
+  }
+</style>
