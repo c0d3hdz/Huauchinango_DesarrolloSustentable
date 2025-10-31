@@ -3,6 +3,7 @@ import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 import "../styles/elements/btn-blog.css";
 import "../styles/elements/manifiestos.css";
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 interface Props {
   title: string;
   description?: string;
@@ -22,6 +23,7 @@ const currentPath = Astro.url.pathname;
     <meta name="description" content={description} />
     <link rel="icon" type="image/x-icon" href="/image/logo.ico" />
     <ViewTransitions />
+    <SpeedInsights/>
     <title>Mi Pueblo Magico - {title} - Huauchinango</title>
   </head>
   <body>
