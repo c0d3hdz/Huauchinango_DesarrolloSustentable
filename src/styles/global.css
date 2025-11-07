@@ -402,7 +402,7 @@ main {
   }
 }
 footer {
-  background: var(--primary-color);
+  background: var(--text-color);
   color: var(--white);
   text-align: center;
   padding: 2rem;

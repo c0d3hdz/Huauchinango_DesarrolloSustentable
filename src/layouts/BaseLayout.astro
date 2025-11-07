@@ -3,7 +3,7 @@ import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 import "../styles/elements/btn-blog.css";
 import "../styles/elements/manifiestos.css";
-import  SpeedInsights  from "@vercel/speed-insights/astro"
+import SpeedInsights from "@vercel/speed-insights/astro";
 interface Props {
   title: string;
   description?: string;
@@ -23,7 +23,8 @@ const currentPath = Astro.url.pathname;
     <meta name="description" content={description} />
     <link rel="icon" type="image/x-icon" href="/image/logo.ico" />
     <ViewTransitions />
-    <SpeedInsights/>
+    <SpeedInsights />
+
     <title>Mi Pueblo Magico - {title} - Huauchinango</title>
   </head>
   <body>
@@ -103,7 +104,10 @@ const currentPath = Astro.url.pathname;
             return;
           }
 
-          if (!(e.target as Element).closest || !(e.target as Element).closest("nav")) {
+          if (
+            !(e.target as Element).closest ||
+            !(e.target as Element).closest("nav")
+          ) {
             getToggle()?.classList.remove("active");
             getNav()?.classList.remove("active");
           }
@@ -111,15 +115,16 @@ const currentPath = Astro.url.pathname;
       })();
     </script>
 
-
     <main>
       <slot />
     </main>
 
-
     <footer>
-      <p>&copy; 2024 Turismo Huauchinango - Desarrollo Sustentable</p>
-      <p>Sitio web informativo sobre la región de Huauchinango</p>
+      <p>&copy; 2025 Turismo Huauchinango - Desarrollo Sustentable</p>
+      <p>
+        Sitio web informativo sobre la región de Huauchinango por Damian Marquez
+        ( c0d3hdz )
+      </p>
     </footer>
   </body>
 </html>
